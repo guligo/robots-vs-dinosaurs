@@ -6,11 +6,11 @@
 
   https://www.hackerrank.com
 
-- A Clojure Newbie Guide :sparkles:
+- A Clojure Newbie Guide :purple_heart:
 
   http://www.clojurenewbieguide.com/
 
-- Awesome Clojure :sparkles:
+- Awesome Clojure :purple_heart:
 
   https://github.com/razum2um/awesome-clojure
 
