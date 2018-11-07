@@ -25,3 +25,7 @@
 - The Clojure Style Guide
 
   https://github.com/bbatsov/clojure-style-guide
+
+- eBay: Clojure for Fun and Profit
+
+  https://www.ebayinc.com/stories/blogs/tech/clojure-for-fun-and-profit
