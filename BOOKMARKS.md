@@ -41,3 +41,8 @@
 - REST API Tutorial
 
   https://restfulapi.net/http-methods/
+
+- deftype, defrecord and defstruct
+
+  https://clojure.org/reference/datatypes
+  https://www.tutorialspoint.com/clojure/clojure_structmaps.htm
