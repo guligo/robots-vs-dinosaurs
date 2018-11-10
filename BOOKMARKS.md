@@ -44,5 +44,5 @@
 
 - deftype, defrecord and defstruct
 
-  https://clojure.org/reference/datatypes
-  https://www.tutorialspoint.com/clojure/clojure_structmaps.htm
+  - https://clojure.org/reference/datatypes
+  - https://www.tutorialspoint.com/clojure/clojure_structmaps.htm
