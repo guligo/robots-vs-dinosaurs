@@ -30,6 +30,14 @@
 
   https://www.ebayinc.com/stories/blogs/tech/clojure-for-fun-and-profit
 
+- Clojure Made Simple by Rich Hickey
+  
+  https://youtu.be/VSdnJDO-xdg
+
+- Simplicity Ain't Easy by Stuart Halloway
+
+  https://youtu.be/cidchWg74Y4
+
 - REST API Tutorial
 
   https://restfulapi.net/http-methods/
