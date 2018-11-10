@@ -29,3 +29,7 @@
 - eBay: Clojure for Fun and Profit
 
   https://www.ebayinc.com/stories/blogs/tech/clojure-for-fun-and-profit
+
+- REST API Tutorial
+
+  https://restfulapi.net/http-methods/
