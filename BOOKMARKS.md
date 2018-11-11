@@ -46,3 +46,7 @@
 
   - https://clojure.org/reference/datatypes
   - https://www.tutorialspoint.com/clojure/clojure_structmaps.htm
+
+- Leiningen
+
+  https://leiningen.org/
