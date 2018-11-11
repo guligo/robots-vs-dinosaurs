@@ -1,7 +1,7 @@
-(ns com.nubank.exercise.handler-test
+(ns com.nubank.exercise.rest-test
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
-            [com.nubank.exercise.handler :refer :all]))
+            [com.nubank.exercise.rest :refer :all]))
 
 (deftest test-app
   (testing "main route"

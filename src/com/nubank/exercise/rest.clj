@@ -1,4 +1,4 @@
-(ns com.nubank.exercise.handler
+(ns com.nubank.exercise.rest
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
