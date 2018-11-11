@@ -55,6 +55,6 @@
 
   https://github.com/weavejester/compojure
 
-- A REST API in Clojure
+- Example: REST API in Clojure
 
   https://blog.interlinked.org/programming/clojure_rest.html
