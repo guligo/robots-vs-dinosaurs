@@ -1,6 +1,6 @@
-(ns robots-vs-dinosaurs.core-test
+(ns com.nubank.exercise.core-test
   (:require [clojure.test :refer :all]
-            [robots-vs-dinosaurs.core :refer :all]))
+            [com.nubank.exercise.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
