@@ -2,8 +2,12 @@
   (:require [com.nubank.exercise.core :refer :all])
   (:import (com.nubank.exercise.core Cell Robot Dinosaur)))
 
+(defn move[simulation, robot, dirn]
+  "Moves robot forward or backward"
+  simulation)
+
 (defn turn[simulation, robot, side]
-  "Turns robot"
+  "Turns robot to the left or right"
   (def new-side (if (= side :left)
     (case (:dirn robot)
       :up :left
