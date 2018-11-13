@@ -4,6 +4,11 @@
             [com.nubank.exercise.actions :refer :all])
   (:import (com.nubank.exercise.core Simulation Cell Robot Dinosaur)))
 
+(deftest robot-turn
+  (testing "Robot is turning"
+    (is (= (Simulation. [(Robot. 1 (Cell. 1 1) :up)])
+           (turn (Simulation. [(Robot. 1 (Cell. 1 1) :left)]) (Robot. 1 (Cell. 1 1) :left) :right)))))
+
 (deftest robot-attack
   (testing "Robot is destroying dinosaurs around it"
     (is (= (Simulation. [(Robot. 1 (Cell. 1 1) :up)])
