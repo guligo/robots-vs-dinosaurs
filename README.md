@@ -1,4 +1,6 @@
-# Robots vs Dinosaurs
+# Description
+
+## Robots vs Dinosaurs
 
 Nubank is assembling an army of remote-controlled robots to fight the dinosaurs and the first step towards that is to run simulations on how they will perform. You are tasked with implementing a service that provides a REST API to support those simulations.
 
@@ -13,3 +15,11 @@ These are the features required:
 - Display the simulation's current state;
 - Two or more entities (robots or dinosaurs) cannot occupy the same position;
 - Attempting to move a robot outside the simulation space is an invalid operation.
+
+# Development
+
+In order to run project locally, use following command:
+
+```
+lein ring server-headless
+```
