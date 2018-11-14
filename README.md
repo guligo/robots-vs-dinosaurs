@@ -18,8 +18,12 @@ These are the features required:
 
 # Development
 
-In order to run project locally, use following command:
+In order to run project locally go through the steps below.
+
+1) Execute command:
 
 ```
 lein ring server-headless
 ```
+
+2) Connect to http://localhost:3000/simulation
