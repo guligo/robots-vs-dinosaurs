@@ -58,3 +58,7 @@
 - Example: REST API in Clojure
 
   https://blog.interlinked.org/programming/clojure_rest.html
+
+- Threading Macros Guide
+
+  https://clojure.org/guides/threading_macros
