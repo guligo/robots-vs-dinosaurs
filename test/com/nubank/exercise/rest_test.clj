@@ -25,3 +25,12 @@
   (testing "Request to create dinosaur"
     (let [response (app (mock/request :post "/dinosaurs"))]
       (is (= (:status response) 204)))))
+
+(deftest test-wrong-routes
+  (testing "Request to nonexistent route"
+    (let [response (app (mock/request :post "/sharks"))]
+      (is (= (:status response) 404))))
+
+  (testing "Request to existing route with wrong method"
+    (let [response (app (mock/request :patch "/simulation"))]
+      (is (= (:status response) 404)))))
