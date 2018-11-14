@@ -18,7 +18,7 @@ These are the features required:
 
 # Development
 
-In order to run project locally go through following steps:
+In order to run project locally:
 
 1. Execute ```lein ring server-headless```
 
