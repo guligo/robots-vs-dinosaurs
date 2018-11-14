@@ -22,4 +22,4 @@ In order to run project locally:
 
 1. Execute ```lein ring server-headless```
 
-1. Access http://localhost:3000/simulation
+1. Access http://localhost:3000/simulation in your favourite browser
