@@ -18,12 +18,8 @@ These are the features required:
 
 # Development
 
-In order to run project locally go through the steps below.
+In order to run project locally go through following steps:
 
-1) Execute command:
+1. Execute ```lein ring server-headless```
 
-```
-lein ring server-headless
-```
-
-2) Connect to http://localhost:3000/simulation
+1. Access http://localhost:3000/simulation
