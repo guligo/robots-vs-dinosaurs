@@ -11,12 +11,12 @@
 (defn- private-create-actor [simulation, actor]
   "Adds an actor to simulation"
   (if (not-any? #(= (:position %) (:position actor)) (:actors simulation))
-    (Simulation. (conj (:actors simulation) actor))
+    (->Simulation (conj (:actors simulation) actor))
     simulation))
 
 (defn- private-delete-actor [simulation, actor]
   "Deletes an actor from simulation"
-  (Simulation. (remove #(= actor %) (:actors simulation))))
+  (->Simulation (remove #(= actor %) (:actors simulation))))
 
 (defn create-robot [simulation, robot]
   "Adds robot to simulation"
@@ -41,7 +41,7 @@
           (map-indexed vector (:actors simulation))))))
 
   (if (some? index)
-    (Simulation. (assoc (:actors simulation) index robot))
+    (->Simulation (assoc (:actors simulation) index robot))
     simulation))
 
 (defn delete-dinosaur [simulation, dinosaur]

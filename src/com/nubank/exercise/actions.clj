@@ -23,10 +23,9 @@
 
 (defn attack[simulation, robot]
   "Destroys dinosaurs around robot"
-  (delete-dinosaur
-    (delete-dinosaur
-      (delete-dinosaur
-        (delete-dinosaur simulation, (Dinosaur. (Cell. (- (:row (:pos robot)) 1) (:col (:pos robot)))))
-        (Dinosaur. (Cell. (+ (:row (:pos robot)) 1) (:col (:pos robot)))))
-      (Dinosaur. (Cell. (:row (:pos robot)) (- (:col (:pos robot)) 1))))
-    (Dinosaur. (Cell. (:row (:pos robot)) (+ (:col (:pos robot)) 1)))))
+  (-> simulation
+    (delete-dinosaur (->Dinosaur (->Cell (- (:row (:pos robot)) 1) (:col (:pos robot)))))
+    (delete-dinosaur (->Dinosaur (->Cell (+ (:row (:pos robot)) 1) (:col (:pos robot)))))
+    (delete-dinosaur (->Dinosaur (->Cell (:row (:pos robot)) (- (:col (:pos robot)) 1))))
+    (delete-dinosaur (->Dinosaur (->Cell (:row (:pos robot)) (+ (:col (:pos robot)) 1))))
+  ))
