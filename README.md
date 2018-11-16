@@ -20,6 +20,8 @@ These are the features required:
 
 In order to run project locally:
 
-1. Execute ```lein ring server-headless```
+1. Before execution run tests using command ```lein cloverage```
+
+1. Then execute ```lein ring server-headless```
 
 1. Access http://localhost:3000/simulation in your favourite browser
