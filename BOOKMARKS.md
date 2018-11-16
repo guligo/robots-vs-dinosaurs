@@ -62,3 +62,7 @@
 - Threading Macros Guide
 
   https://clojure.org/guides/threading_macros
+
+- Cloverage
+
+  https://github.com/cloverage/cloverage
