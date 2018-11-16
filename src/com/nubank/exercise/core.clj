@@ -10,7 +10,7 @@
 
 (defn- private-create-actor [simulation, actor]
   "Adds an actor to simulation"
-  (if (not-any? #(= (:position %) (:position actor)) (:actors simulation))
+  (if (not-any? #(= (:pos %) (:pos actor)) (:actors simulation))
     (->Simulation (conj (:actors simulation) actor))
     simulation))
 
