@@ -66,3 +66,7 @@
 - Cloverage
 
   https://github.com/cloverage/cloverage
+
+- Metadata
+
+  https://clojure.org/reference/metadata
