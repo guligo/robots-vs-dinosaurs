@@ -70,3 +70,7 @@
 - Metadata
 
   https://clojure.org/reference/metadata
+
+- Fully Qualified Keywords
+
+  http://kotka.de/blog/2010/05/Did_you_know_III.html
