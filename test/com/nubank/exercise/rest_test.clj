@@ -1,36 +1,37 @@
 (ns com.nubank.exercise.rest-test
   (:require [clojure.test :refer :all]
+            [midje.sweet :refer :all]
             [ring.mock.request :as mock]
             [com.nubank.exercise.rest :refer :all]))
 
-(deftest test-simulation-routes
-  (testing "Request to retrieve simulation"
+(facts "About simulation REST resource"
+  (fact "Request to retrieve simulation can be handled"
     (let [response (app (mock/request :get "/simulation"))]
-      (is (= (:status response) 200))))
+      (:status response) => 200))
 
-  (testing "Request to delete simulation"
+  (fact "Request to delete simulation can be handled"
     (let [response (app (mock/request :delete "/simulation"))]
-      (is (= (:status response) 204)))))
+      (:status response) => 204)))
 
-(deftest test-robots-routes
-  (testing "Request to create robot"
+(facts "About robots REST resource"
+  (fact "Request to create robot can be handled"
     (let [response (app (mock/request :post "/robots"))]
-      (is (= (:status response) 204))))
+      (:status response) => 204))
 
-  (testing "Request to update robot"
+  (fact "Request to update robot can be handled"
     (let [response (app (mock/request :patch "/robots/1"))]
-      (is (= (:status response) 204)))))
+      (:status response) => 204)))
 
-(deftest test-dinosaurs-routes
-  (testing "Request to create dinosaur"
+(facts "About dinosaurs REST resource"
+  (testing "Request to create dinosaur can be handled"
     (let [response (app (mock/request :post "/dinosaurs"))]
-      (is (= (:status response) 204)))))
+      (:status response) => 204)))
 
-(deftest test-wrong-routes
-  (testing "Request to nonexistent route"
+(facts "About wrong routes"
+  (fact "Request to nonexistent route is not handled"
     (let [response (app (mock/request :post "/sharks"))]
-      (is (= (:status response) 404))))
+      (:status response) => 404))
 
-  (testing "Request to existing route with wrong method"
+  (testing "Request to existing route with wrong method is not handled"
     (let [response (app (mock/request :patch "/simulation"))]
-      (is (= (:status response) 404)))))
+      (:status response) => 404)))

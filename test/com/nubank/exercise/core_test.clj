@@ -1,13 +1,15 @@
 (ns com.nubank.exercise.core-test
   (:require [clojure.test :refer :all]
+            [midje.sweet :refer :all]
             [com.nubank.exercise.core :refer :all])
   (:import (com.nubank.exercise.core Simulation Cell Robot Dinosaur)))
 
-(deftest creating-actors-in-simulation
-  (testing "Robot is added to simulation"
-    (is (= (Simulation. [(Robot. 1 (Cell. 0 0) :up)])
-           (create-robot (Simulation. []) (Robot. 1 (Cell. 0 0) :up)))))
+(facts "About robot creation"
+  (fact "Robot can be added to simulation"
+    (Simulation. [(Robot. 1 (Cell. 0 0) :up)])
+    => (create-robot (Simulation. []) (Robot. 1 (Cell. 0 0) :up))))
 
+(deftest creating-actors-in-simulation
   (testing "Robots are added to simulation"
     (is (= (Simulation. [(Robot. 1 (Cell. 0 0) :up), (Robot. 2 (Cell. 1 1) :down)])
            (-> (Simulation. [])
