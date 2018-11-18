@@ -84,3 +84,7 @@
 - Compojure API
 
   https://github.com/metosin/compojure-api
+
+- Midje
+
+  https://github.com/marick/Midje/wiki/A-tutorial-introduction-for-Clojure.test-users
