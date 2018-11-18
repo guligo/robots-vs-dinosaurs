@@ -77,7 +77,9 @@
 
 - Schema & Clojure Spec for the Web Developer
 
-  https://www.metosin.fi/blog/schema-spec-web-devs/
+  - https://www.metosin.fi/blog/schema-spec-web-devs/
+  - https://github.com/plumatic/schema
+  - https://clojure.org/guides/spec
 
 - Compojure API
 
