@@ -1,22 +1,41 @@
 (ns com.nubank.exercise.rest
   (:require [com.nubank.exercise.core :refer :all]
-            [compojure.core :refer :all]
-            [compojure.route :as route]
-            [compojure.handler :as handler]
-            [ring.middleware.json :as middleware]))
+            [com.nubank.exercise.data :refer :all]
+            [compojure.api.sweet :refer :all]
+            [ring.util.http-response :refer :all]
+            [compojure.route :as route])
+  (:import [com.nubank.exercise.data Simulation]))
 
-(def simulation (atom (->Simulation [])))
-
-(defroutes api-routes
-  (GET    "/simulation" [] {:status 200, :body @simulation})
-  (DELETE "/simulation" [] (reset! simulation (->Simulation [])) {:status 204})
-  (POST   "/robots"     {robot :body} (reset! simulation (create-robot @simulation robot)) {:status 204})
-  (PATCH  "/robots/:id" [id] {:status 204})
-  (POST   "/dinosaurs"  {dinosaur :body} (reset! simulation (create-dinosaur @simulation dinosaur)) {:status 204})
-  (route/not-found      {:status 404}))
+(def simulation (atom (Simulation. [])))
 
 (def app
-  (->
-    (handler/site api-routes)
-    (middleware/wrap-json-body)
-    (middleware/wrap-json-response)))
+  (api {:swagger {:ui "/docs"
+                  :spec "/swagger.json"
+                  :data {:info {:title "Robots vs Dinosaurs"
+                                :description "REST API for robots versus dinosaurs problem"}
+                         :consumes ["application/json"]
+                         :produces ["application/json"]}}}
+
+    (GET "/simulation" []
+         :summary "Returns current state of simulation"
+         (ok @simulation))
+
+    (DELETE "/simulation" []
+            :summary "Resets simulation to initial state"
+            (reset! simulation (Simulation. []))
+            (no-content))
+
+    (POST "/robots" []
+          :summary "Creates robot"
+          :body [robot RobotSchema]
+          (reset! simulation (create-robot @simulation robot))
+          (no-content))
+
+    (POST "/dinosaurs" []
+          :summary "Creates dinosaur"
+          :body [dinosaur DinosaurSchema]
+          (reset! simulation (create-dinosaur @simulation dinosaur))
+          (no-content))
+
+    (undocumented
+      (route/not-found (not-found)))))

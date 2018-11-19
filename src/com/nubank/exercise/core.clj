@@ -1,16 +1,10 @@
-(ns com.nubank.exercise.core)
-
-(defrecord Cell [row, col])
-
-(defrecord Robot [id, pos, dirn])
-
-(defrecord Dinosaur [pos])
-
-(defrecord Simulation [actors])
+(ns com.nubank.exercise.core
+  (:require [com.nubank.exercise.data :refer :all])
+  (:import (com.nubank.exercise.data Dinosaur)))
 
 (defn- private-create-actor [simulation, actor]
   "Adds an actor to simulation"
-  (if (not-any? #(and (= (:row (:pos %)) (:row (:pos actor))) (= (:col (:pos %)) (:col (:pos actor)))) (:actors simulation))
+  (if (not-any? #(and (= (:row %) (:row actor)) (= (:col %) (:col actor))) (:actors simulation))
     (->Simulation (conj (:actors simulation) actor))
     simulation))
 

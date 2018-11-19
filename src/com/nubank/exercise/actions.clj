@@ -1,6 +1,6 @@
 (ns com.nubank.exercise.actions
   (:require [com.nubank.exercise.core :refer :all])
-  (:import (com.nubank.exercise.core Cell Robot Dinosaur)))
+  (:import (com.nubank.exercise.data Robot Dinosaur)))
 
 (defn move[simulation, robot, dirn]
   "Moves robot forward or backward"
@@ -19,13 +19,13 @@
       :right :down
       :down :left
       :left :up)))
-  (update-robot simulation (Robot. (:id robot) (:pos robot) new-side)))
+  (update-robot simulation (Robot. (:id robot) (:row robot) (:col robot) new-side)))
 
 (defn attack[simulation, robot]
   "Destroys dinosaurs around robot"
   (-> simulation
-    (delete-dinosaur (->Dinosaur (->Cell (- (:row (:pos robot)) 1) (:col (:pos robot)))))
-    (delete-dinosaur (->Dinosaur (->Cell (+ (:row (:pos robot)) 1) (:col (:pos robot)))))
-    (delete-dinosaur (->Dinosaur (->Cell (:row (:pos robot)) (- (:col (:pos robot)) 1))))
-    (delete-dinosaur (->Dinosaur (->Cell (:row (:pos robot)) (+ (:col (:pos robot)) 1))))
+    (delete-dinosaur (Dinosaur. (- (:row robot) 1) (:col robot)))
+    (delete-dinosaur (Dinosaur. (+ (:row robot) 1) (:col robot)))
+    (delete-dinosaur (Dinosaur. (:row robot) (- (:col robot) 1)))
+    (delete-dinosaur (Dinosaur. (:row robot) (+ (:col robot) 1)))
   ))
