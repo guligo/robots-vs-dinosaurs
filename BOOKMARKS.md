@@ -88,3 +88,8 @@
 - Midje
 
   https://github.com/marick/Midje/wiki/A-tutorial-introduction-for-Clojure.test-users
+
+- Building a Database-Backed Clojure Web Application
+
+  - https://devcenter.heroku.com/articles/clojure-web-application
+  - https://github.com/technomancy/shouter
