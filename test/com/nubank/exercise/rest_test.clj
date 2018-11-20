@@ -32,9 +32,18 @@
                                 (mock/content-type "application/json")
                                 (mock/body (cheshire/generate-string robot))))]
           (:status response) => 400))
-  (fact "Request to update robot can be handled"
-    (let [response (app (mock/request :patch "/robots/1"))]
-      (:status response) => 204)))
+  (fact "Request to update robot based on action without parameter can be handled"
+        (let [action {:action :attack}
+              response (app (-> (mock/request :patch "/robots/1")
+                                (mock/content-type "application/json")
+                                (mock/body (cheshire/generate-string action))))]
+          (:status response) => 204))
+  (fact "Request to update robot based on action with parameter can be handled"
+        (let [action {:action :move :param :forward}
+              response (app (-> (mock/request :patch "/robots/2")
+                                (mock/content-type "application/json")
+                                (mock/body (cheshire/generate-string action))))]
+          (:status response) => 204)))
 
 (facts "About dinosaurs REST resource"
   (fact "Request to create dinosaur can be handled"

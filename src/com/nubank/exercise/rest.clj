@@ -31,6 +31,11 @@
           (reset! simulation (create-robot @simulation robot))
           (no-content))
 
+    (PATCH "/robots/:id" []
+           :summary "Updates robot based on provided action"
+           :body [action ActionSchema]
+           (no-content))
+
     (POST "/dinosaurs" []
           :summary "Creates dinosaur"
           :body [dinosaur DinosaurSchema]

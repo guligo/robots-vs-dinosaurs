@@ -19,3 +19,11 @@
 
 (s/defschema DinosaurSchema {:row s/Int
                              :col s/Int})
+
+(s/defschema ActionSchema {:action (s/enum :move
+                                           :turn
+                                           :attack)
+                           (s/optional-key :param) (s/enum :forward
+                                                           :backward
+                                                           :left
+                                                           :right)})
