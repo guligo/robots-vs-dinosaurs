@@ -1,6 +1,6 @@
-(ns com.nubank.exercise.actions
-  (:require [com.nubank.exercise.core :refer :all])
-  (:import (com.nubank.exercise.data Robot Dinosaur)))
+(ns com.nubank.exercise.models.actions
+  (:require [com.nubank.exercise.models.core :refer :all])
+  (:import (com.nubank.exercise.views.data Robot Dinosaur)))
 
 (defn move[simulation, robot, dirn]
   "Moves robot forward or backward"

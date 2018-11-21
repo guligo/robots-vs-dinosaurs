@@ -1,6 +1,6 @@
-(ns com.nubank.exercise.core
-  (:require [com.nubank.exercise.data :refer :all])
-  (:import (com.nubank.exercise.data Dinosaur)))
+(ns com.nubank.exercise.models.core
+  (:require [com.nubank.exercise.views.data :refer :all])
+  (:import (com.nubank.exercise.views.data Dinosaur)))
 
 (defn- private-create-actor [simulation, actor]
   "Adds an actor to simulation"

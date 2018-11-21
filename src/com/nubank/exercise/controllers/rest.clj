@@ -1,10 +1,10 @@
-(ns com.nubank.exercise.rest
-  (:require [com.nubank.exercise.core :refer :all]
-            [com.nubank.exercise.data :refer :all]
+(ns com.nubank.exercise.controllers.rest
+  (:require [com.nubank.exercise.models.core :refer :all]
+            [com.nubank.exercise.views.data :refer :all]
             [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
             [compojure.route :as route])
-  (:import [com.nubank.exercise.data Simulation]))
+  (:import [com.nubank.exercise.views.data Simulation]))
 
 (def simulation (atom (Simulation. [])))
 

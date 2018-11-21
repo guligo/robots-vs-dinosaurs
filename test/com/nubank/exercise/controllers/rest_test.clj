@@ -1,8 +1,8 @@
-(ns com.nubank.exercise.rest-test
+(ns com.nubank.exercise.controllers.rest-test
   (:require [clojure.test :refer :all]
             [midje.sweet :refer :all]
             [ring.mock.request :as mock]
-            [com.nubank.exercise.rest :refer :all]
+            [com.nubank.exercise.controllers.rest :refer :all]
             [cheshire.core :as cheshire]))
 
 (facts "About simulation REST resource"

@@ -1,4 +1,4 @@
-(ns com.nubank.exercise.data
+(ns com.nubank.exercise.views.data
   (:require [schema.core :as s]))
 
 (defrecord Simulation [actors])

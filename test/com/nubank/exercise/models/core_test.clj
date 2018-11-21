@@ -1,8 +1,8 @@
-(ns com.nubank.exercise.core-test
+(ns com.nubank.exercise.models.core-test
   (:require [clojure.test :refer :all]
             [midje.sweet :refer :all]
-            [com.nubank.exercise.core :refer :all])
-  (:import (com.nubank.exercise.data Simulation Robot Dinosaur)))
+            [com.nubank.exercise.models.core :refer :all])
+  (:import (com.nubank.exercise.views.data Simulation Robot Dinosaur)))
 
 (facts "About robot creation"
   (fact "Robot can be added to simulation"

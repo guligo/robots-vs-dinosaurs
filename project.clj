@@ -6,7 +6,7 @@
   :plugins [[lein-ring "0.12.4"]
             [lein-cloverage "1.0.13"]
             [lein-midje "3.2.1"]]
-  :ring {:handler com.nubank.exercise.rest/app}
+  :ring {:handler com.nubank.exercise.controllers.rest/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.2"]
