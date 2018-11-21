@@ -79,6 +79,7 @@
 
   - https://www.metosin.fi/blog/schema-spec-web-devs/
   - https://github.com/plumatic/schema
+  - https://github.com/plumatic/schema/blob/master/test/cljx/schema/core_test.cljx
   - https://clojure.org/guides/spec
 
 - Compojure API
