@@ -1,10 +1,12 @@
 (ns com.nubank.exercise.controllers.rest
-  (:require [com.nubank.exercise.models.core :refer :all]
-            [com.nubank.exercise.views.data :refer :all]
+  (:require [com.nubank.exercise.models.common :refer :all]
+            [com.nubank.exercise.models.robot :refer :all]
+            [com.nubank.exercise.models.dinosaur :refer :all]
+            [com.nubank.exercise.views.schemas :refer :all]
             [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
             [compojure.route :as route])
-  (:import [com.nubank.exercise.views.data Simulation]))
+  (:import (com.nubank.exercise.models.simulation Simulation)))
 
 (def simulation (atom (Simulation. [])))
 

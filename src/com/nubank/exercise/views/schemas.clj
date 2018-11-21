@@ -1,13 +1,5 @@
-(ns com.nubank.exercise.views.data
+(ns com.nubank.exercise.views.schemas
   (:require [schema.core :as s]))
-
-(defrecord Simulation [actors])
-
-(defrecord Robot [id, row, col, dirn])
-
-(defrecord Dinosaur [row, col])
-
-;; unfortunately Compojure API does not work with s/defrecord, hence schema is explicitly defined here
 
 (s/defschema RobotSchema {:id s/Int
                           :row s/Int

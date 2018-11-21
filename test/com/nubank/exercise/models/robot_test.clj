@@ -1,7 +1,11 @@
-(ns com.nubank.exercise.models.actions-test
+(ns com.nubank.exercise.models.robot-test
   (:require [clojure.test :refer :all]
-            [com.nubank.exercise.models.actions :refer :all])
-  (:import (com.nubank.exercise.views.data Simulation Robot Dinosaur)))
+            [com.nubank.exercise.models.robot :refer :all]
+            [com.nubank.exercise.models.dinosaur :refer :all]
+            [com.nubank.exercise.models.simulation :refer :all])
+  (:import (com.nubank.exercise.models.simulation Simulation)
+           (com.nubank.exercise.models.robot Robot)
+           (com.nubank.exercise.models.dinosaur Dinosaur)))
 
 (deftest robot-turn
   (testing "Robot is turning"
