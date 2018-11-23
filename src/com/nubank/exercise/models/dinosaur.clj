@@ -1,14 +1,14 @@
 (ns com.nubank.exercise.models.dinosaur
-  (:require [com.nubank.exercise.models.common :refer :all]))
+  (:require [com.nubank.exercise.models.core :refer :all]))
 
-(defrecord Dinosaur [row, col])
+(defn dinosaur
+  ([row, col] (actor :dinosaur row col))
+  ([row, col, id] (actor :dinosaur row col id)))
 
-(defn create-dinosaur [simulation, dinosaur]
-  "Adds dinosaur to simulation "
-  (create-actor simulation dinosaur))
+(defn create-dinosaur [actors, dinosaur]
+  "Adds dinosaur to simulation"
+  (create-actor actors dinosaur))
 
-(defn delete-dinosaur [simulation, dinosaur]
-  "Deletes dinosaur from simulation "
-  (if (instance? Dinosaur dinosaur)
-    (delete-actor simulation dinosaur)
-    simulation))
+(defn delete-dinosaur [actors, row, col]
+  "Deletes dinosaur from simulation"
+  (delete-actor actors :dinosaur row col))

@@ -1,58 +1,61 @@
 (ns com.nubank.exercise.models.robot
-  (:require [com.nubank.exercise.models.common :refer :all]
-            [com.nubank.exercise.models.simulation :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all])
-  (:import (com.nubank.exercise.models.simulation Simulation)
-           (com.nubank.exercise.models.dinosaur Dinosaur)))
+  (:require [com.nubank.exercise.models.core :refer :all]
+            [com.nubank.exercise.models.dinosaur :refer :all]))
 
-(defrecord Robot [id, row, col, dirn])
+(defn robot
+  ([row, col, dirn] (assoc (actor :robot row col) :dirn dirn))
+  ([row, col, dirn, id] (assoc (actor :robot row col id) :dirn dirn)))
 
-(defn create-robot [simulation, robot]
-  "Adds robot to simulation "
-  (create-actor simulation robot))
+(defn create-robot [actors, robot]
+  "Adds robot to simulation"
+  (create-actor actors robot))
 
-(defn get-robot [simulation, robot-id]
-  "Retrieves robot by its ID "
-  (some #(if (= robot-id (:id %)) %) (:actors simulation)))
+;; TODO: consider refactoring into form attack-dinosaurs [actors, robot-id]
 
-(defn update-robot [simulation, robot]
-  "Updates robot in simulation based on its ID ",
-  (def index
-    (first
-      (map
-        first
-        (filter
-          #(= (:id (second %)) (:id robot))
-          (map-indexed vector (:actors simulation))))))
-
-  (if (some? index)
-    (Simulation. (assoc (:actors simulation) index robot))
-    simulation))
-
-(defn move[simulation, robot, dirn]
-  "Moves robot forward or backward"
-  simulation)
-
-(defn turn[simulation, robot, side]
-  "Turns robot to the left or right"
-  (def new-side (if (= side :left)
-                  (case (:dirn robot)
-                    :up :left
-                    :left :down
-                    :down :right
-                    :right :up)
-                  (case (:dirn robot)
-                    :up :right
-                    :right :down
-                    :down :left
-                    :left :up)))
-  (update-robot simulation (Robot. (:id robot) (:row robot) (:col robot) new-side)))
-
-(defn attack[simulation, robot]
+(defn attack-dinosaurs [actors, robot]
   "Destroys dinosaurs around robot"
-  (-> simulation
-      (delete-dinosaur (Dinosaur. (- (:row robot) 1) (:col robot)))
-      (delete-dinosaur (Dinosaur. (+ (:row robot) 1) (:col robot)))
-      (delete-dinosaur (Dinosaur. (:row robot) (- (:col robot) 1)))
-      (delete-dinosaur (Dinosaur. (:row robot) (+ (:col robot) 1)))
-      ))
+  (-> actors
+      (delete-actor :dinosaur (- (:row robot) 1) (:col robot))
+      (delete-actor :dinosaur (+ (:row robot) 1) (:col robot))
+      (delete-actor :dinosaur (:row robot) (- (:col robot) 1))
+      (delete-actor :dinosaur (:row robot) (+ (:col robot) 1))))
+
+;; TODO: consider refactoring into form turn-robot [actors, robot-id, side]
+
+(defn turn-robot [actors, robot, side]
+  "Turns robot to the left or right"
+  (let [dirn (if (= side :left)
+               (case (:dirn robot)
+                 :north :west
+                 :west :south
+                 :south :east
+                 :east :north)
+               (if (= side :right)
+                 (case (:dirn robot)
+                   :north :east
+                   :east :south
+                   :south :west
+                   :west :north)
+                 side))]
+    (update-actor actors (assoc robot :dirn dirn))))
+
+;; TODO: consider refactoring into form move-robot [actors, robot-id, motion]
+
+(defn move-robot [actors, robot, motion]
+  "Moves robot forward or backward"
+  (let [move (if (= motion :forward)
+               (case (:dirn robot)
+                 :north {:row (- (:row robot) 1)}
+                 :west {:col (- (:col robot) 1)}
+                 :south {:row (+ (:row robot) 1)}
+                 :east {:col (+ (:col robot) 1)})
+               (if (= motion :backward)
+                 (case (:dirn robot)
+                   :north {:row (- (:row robot) 1)}
+                   :west {:col (- (:col robot) 1)}
+                   :south {:row (+ (:row robot) 1)}
+                   :east {:col (+ (:col robot) 1)})
+                 {}))]
+    (update-actor actors (merge robot move))))
+
+
