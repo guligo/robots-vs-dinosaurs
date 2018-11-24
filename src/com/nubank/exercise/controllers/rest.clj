@@ -1,12 +1,9 @@
-(ns com.nubank.exercise.rest
-  (:require [com.nubank.exercise.core :refer :all]
-            [com.nubank.exercise.data :refer :all]
+(ns com.nubank.exercise.controllers.rest
+  (:require [com.nubank.exercise.models.simulation :refer :all]
+            [com.nubank.exercise.views.schemas :refer :all]
             [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
-            [compojure.route :as route])
-  (:import [com.nubank.exercise.data Simulation]))
-
-(def simulation (atom (Simulation. [])))
+            [compojure.route :as route]))
 
 (def app
   (api {:swagger {:ui "/docs"
@@ -18,17 +15,17 @@
 
     (GET "/simulation" []
          :summary "Returns current state of simulation"
-         (ok @simulation))
+         (ok (get-simulation)))
 
     (DELETE "/simulation" []
             :summary "Resets simulation to initial state"
-            (reset! simulation (Simulation. []))
+            (delete-simulation!)
             (no-content))
 
     (POST "/robots" []
           :summary "Creates robot"
           :body [robot RobotSchema]
-          (reset! simulation (create-robot @simulation robot))
+          (create-robot! robot)
           (no-content))
 
     (PATCH "/robots/:id" []
@@ -39,7 +36,7 @@
     (POST "/dinosaurs" []
           :summary "Creates dinosaur"
           :body [dinosaur DinosaurSchema]
-          (reset! simulation (create-dinosaur @simulation dinosaur))
+          (create-dinosaur! dinosaur)
           (no-content))
 
     (undocumented

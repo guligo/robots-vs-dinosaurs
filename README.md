@@ -20,7 +20,7 @@ These are the features required:
 
 In order to run project locally:
 
-1. Before execution run tests using command ```lein midje```
+1. Before execution run tests using command ```lein midje``` or ```lein cloverage --runner :midje```
 
 1. Then execute ```lein ring server-headless```
 
