@@ -16,8 +16,11 @@
   (and (= (:type actor1) (:type actor2))
        (actors-in-same-location? actor1 actor2)))
 
-(defn- actors-equals-based-on-id? [actor1, actor2]
-  (= (:id actor1) (:id actor2)))
+(defn- no-other-actors-with-same-id? [actors, actor]
+  (not-any? #(= (:id actor) (:id %)) actors))
+
+(defn- no-other-actors-with-same-location? [actors, actor]
+  (not-any? #(actors-in-same-location? actor %) actors))
 
 (defn- get-id [actors]
   (if (not (empty? actors))
@@ -32,12 +35,19 @@
        (<= (:row actor) max-boundary)))
 
 (defn create-actor [actors, actor]
+  {:pre [(contains? actor :type)
+         (contains? actor :row)
+         (contains? actor :col)]}
   "Adds an actor to actor list if one with such location does not already exist"
   (if (and (actor-within-boundaries? actor)
-           (not-any? #(actors-in-same-location? actor %) actors)
-           (not-any? #(actors-equals-based-on-id? actor %) actors))
+           (no-other-actors-with-same-location? actors actor)
+           (no-other-actors-with-same-id? actors actor))
     (conj actors (assoc actor :id (get-id actors)))
     actors))
+
+(defn get-actor [actors, type, actor-id]
+  "Retrieves actor by its ID"
+  (some #(if (and (= type (:type %)) (= actor-id (:id %))) %) actors))
 
 (defn update-actor [actors, actor]
   "Updates actor within simulation based on its ID"
@@ -47,8 +57,8 @@
                                   (= (:type (second %) (:type actor))))
                             (map-indexed vector actors))))]
     (if (and (actor-within-boundaries? actor)
-             (some? index)
-             (not-any? #(actors-in-same-location? actor %) actors))
+             (no-other-actors-with-same-location? actors actor)
+             (some? index))
       (assoc actors index actor)
       actors)))
 

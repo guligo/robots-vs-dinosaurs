@@ -17,7 +17,16 @@
              => [])
        (fact "Impossible to create an actor outside of maximal boundaries"
              (create-actor [] (actor :actor2 0 50))
-             => []))
+             => [])
+       (fact "Impossible to create an actor without required fields"
+             (create-actor [] {:row 0 :col 1}) => (throws AssertionError)
+             (create-actor [] {:type :actor1}) => (throws AssertionError)))
+
+(facts "About actor retrieval"
+       (fact "Possible to retrieve actor by ID knowing its type"
+             (get-actor [(actor :actor1 0 1 2)] :actor1 2) => (actor :actor1 0 1 2)
+             (get-actor [(actor :actor1 0 1 2)] :actor2 2) => nil
+             (get-actor [(actor :actor1 0 1 2)] :actor1 0) => nil))
 
 (facts "About actor update"
        (fact "Possible to update actor's location"

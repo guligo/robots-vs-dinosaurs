@@ -24,6 +24,6 @@
   "Creates robot in ongoing simulation"
   (reset! ongoing-simulation (simulation (create-robot (:actors @ongoing-simulation) robot))))
 
-(defn perform-robot-action! [robot, action]
+(defn perform-robot-action! [robot-id, action]
   "Performs robot action thus updating ongoing simulation"
-  (reset! ongoing-simulation (simulation (perform-robot-action (:actors @ongoing-simulation) robot action))))
+  (reset! ongoing-simulation (simulation (perform-robot-action (:actors @ongoing-simulation) robot-id action))))

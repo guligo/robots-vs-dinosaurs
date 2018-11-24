@@ -62,11 +62,10 @@
                  {}))]
     (update-actor actors (merge robot move))))
 
-;; TODO: Consider refactoring into form perform-robot-action [actors, robot-id, action, param]
-
-(defn perform-robot-action [actors, robot, action]
+(defn perform-robot-action [actors, robot-id, action]
   "Performs specific action on robot"
-  (let [name (:name action)
+  (let [robot (get-actor actors :robot robot-id)
+        name (:action action)
         param (:param action)]
     (case name
       :attack (attack-dinosaurs actors robot)
