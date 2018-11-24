@@ -16,10 +16,14 @@
   "Deletes ongoing simulation"
   (reset! ongoing-simulation (simulation [])))
 
-(defn create-robot! [actor]
-  "Creates robot in ongoing simulation"
-  (reset! ongoing-simulation (simulation (create-robot (:actors @ongoing-simulation) actor))))
-
-(defn create-dinosaur! [actor]
+(defn create-dinosaur! [dinosaur]
   "Creates dinosaur in ongoing simulation"
-  (reset! ongoing-simulation (simulation (create-dinosaur (:actors @ongoing-simulation) actor))))
+  (reset! ongoing-simulation (simulation (create-dinosaur (:actors @ongoing-simulation) dinosaur))))
+
+(defn create-robot! [robot]
+  "Creates robot in ongoing simulation"
+  (reset! ongoing-simulation (simulation (create-robot (:actors @ongoing-simulation) robot))))
+
+(defn perform-robot-action! [robot, action]
+  "Performs robot action thus updating ongoing simulation"
+  (reset! ongoing-simulation (simulation (perform-robot-action (:actors @ongoing-simulation) robot action))))
