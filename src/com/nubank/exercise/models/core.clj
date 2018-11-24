@@ -1,8 +1,5 @@
-(ns com.nubank.exercise.models.core)
-
-(def min-boundary 0)
-
-(def max-boundary 49)
+(ns com.nubank.exercise.models.core
+  (:require [com.nubank.exercise.models.common :refer :all]))
 
 (defn actor
   "Constructs actor map"

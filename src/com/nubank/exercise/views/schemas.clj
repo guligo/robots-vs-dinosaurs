@@ -1,18 +1,24 @@
 (ns com.nubank.exercise.views.schemas
-  (:require [schema.core :as s]))
+  (:require [com.nubank.exercise.models.common :refer :all]
+            [schema.core :as s]))
 
-(s/defschema DinosaurSchema {:row (s/constrained s/Int #(<= 0 % 49))
-                             :col (s/constrained s/Int #(<= 0 % 49))})
+(s/defschema Dinosaur {:row (s/constrained s/Int #(<= min-boundary % max-boundary))
+                       :col (s/constrained s/Int #(<= min-boundary % max-boundary))})
 
-(s/defschema RobotSchema {:row (s/constrained s/Int #(<= 0 % 49))
-                          :col (s/constrained s/Int #(<= 0 % 49))
-                          :dirn (s/enum :north
-                                        :west
-                                        :south
-                                        :east)})
+(s/defschema Robot {:row (s/constrained s/Int #(<= 0 % 49))
+                    :col  (s/constrained s/Int #(<= 0 % 49))
+                    :dirn (s/enum :north
+                                  :west
+                                  :south
+                                  :east)})
 
-(s/defschema ActionSchema (s/if #(= (:action %) :move)
-                             {:action (s/eq :move) :param (s/enum :forward :backward)}
-                             (s/if #(= (:action %) :turn)
-                               {:action (s/eq :turn) :param (s/enum :left :right)}
-                               {:action (s/eq :attack)})))
+;; Unfortunately Compojure API does not seem to support s/if construct of schema, hence schema itself is not exactly
+;; precise and certain aspects of validation are provided by other components.
+
+(s/defschema Action {:action (s/enum :move
+                                     :turn
+                                     :attack)
+                     (s/optional-key :param) (s/enum :forward
+                                                     :backward
+                                                     :left
+                                                     :right)})

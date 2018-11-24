@@ -24,4 +24,4 @@ In order to run project locally:
 
 1. Then execute ```lein ring server-headless```
 
-1. Access http://localhost:3000/docs in your favourite browser
+1. Access http://localhost:3000/docs/index.html#/default in your favourite browser

@@ -24,18 +24,18 @@
 
     (POST "/robots" []
           :summary "Creates robot"
-          :body [robot RobotSchema]
+          :body [robot Robot]
           (create-robot! robot)
           (no-content))
 
     (PATCH "/robots/:id" []
            :summary "Updates robot based on provided action"
-           :body [action ActionSchema]
+           :body [action Action]
            (no-content))
 
     (POST "/dinosaurs" []
           :summary "Creates dinosaur"
-          :body [dinosaur DinosaurSchema]
+          :body [dinosaur Dinosaur]
           (create-dinosaur! dinosaur)
           (no-content))
 
