@@ -5,7 +5,7 @@
             [com.nubank.exercise.views.schemas :refer :all]
             [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
-            [compojure.route :as route]))
+            [compojure.route :as r]))
 
 (defn request->robot [request]
   (robot (:row request) (:col request) (:dirn request)))
@@ -13,7 +13,7 @@
 (defn request->dinosaur [request]
   (dinosaur (:row request) (:col request)))
 
-(def app
+(defn rest-routes []
   (api {:swagger {:ui "/docs"
                   :spec "/swagger.json"
                   :data {:info {:title "Robots vs Dinosaurs"
@@ -45,9 +45,9 @@
 
     (POST "/dinosaurs" []
           :summary "Creates dinosaur"
-          :body [dinosaur Dinosaur]
-          (create-dinosaur! dinosaur)
+          :body [request Dinosaur]
+          (create-dinosaur! (request->dinosaur request))
           (no-content))
 
     (undocumented
-      (route/not-found (not-found)))))
+      (r/not-found (not-found)))))
