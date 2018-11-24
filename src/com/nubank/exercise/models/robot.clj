@@ -57,5 +57,3 @@
                    :east {:col (+ (:col robot) 1)})
                  {}))]
     (update-actor actors (merge robot move))))
-
-

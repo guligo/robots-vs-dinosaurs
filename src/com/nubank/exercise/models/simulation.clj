@@ -3,10 +3,8 @@
             [com.nubank.exercise.models.robot :refer :all]
             [com.nubank.exercise.models.dinosaur :refer :all]))
 
-(defrecord Simulation [actors])
-
 (defn simulation [actors]
-  (->Simulation actors))
+  {:actors actors})
 
 (def ongoing-simulation (atom (simulation [])))
 
@@ -24,4 +22,4 @@
 
 (defn create-dinosaur! [actor]
   "Creates dinosaur in ongoing simulation"
-  (reset! ongoing-simulation (simulation (create-actor (:actors @ongoing-simulation) actor))))
+  (reset! ongoing-simulation (simulation (create-dinosaur (:actors @ongoing-simulation) actor))))
