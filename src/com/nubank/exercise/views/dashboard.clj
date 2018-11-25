@@ -17,7 +17,7 @@
       (render-actor actor))
     (render-field)))
 
-(defn render [req]
+(defn render []
   (let [actors (:actors (get-simulation))
         matrix (zipmap (map #(vector (:row %) (:col %)) actors) actors)]
     (html

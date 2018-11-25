@@ -3,4 +3,4 @@
             [compojure.api.sweet :refer :all]))
 
 (defn page-routes []
-  (GET "/dashboard" req (render req)))
+  (GET "/dashboard" _ (render)))
