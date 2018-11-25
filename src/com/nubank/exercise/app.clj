@@ -5,7 +5,7 @@
             [compojure.api.sweet :refer :all]))
 
 (defroutes app-routes
-           "This macro builds handlers based on provided routes."
+           "This macro builds handlers for REST API and HTTP pages."
            (p/page-routes)
            (r/rest-routes))
 

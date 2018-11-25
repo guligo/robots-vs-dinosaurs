@@ -1,5 +1,5 @@
 (ns com.nubank.exercise.controllers.rest
-  "This namespace contains functions used for creation of REST API routes."
+  "This namespace contains functions used for creating REST API routes."
   (:require [com.nubank.exercise.models.simulation :refer :all]
             [com.nubank.exercise.models.robot :refer :all]
             [com.nubank.exercise.models.dinosaur :refer :all]
@@ -26,7 +26,7 @@
     (action (:action request))))
 
 (defn rest-routes
-  "This function creates REST API routes as well as configures Swagger for documenting those APIs."
+  "This function creates simulation REST API routes as well as configures Swagger for documenting those APIs."
   []
   (api {:swagger {:ui "/docs"
                   :spec "/swagger.json"
