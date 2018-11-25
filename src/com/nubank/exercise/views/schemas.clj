@@ -18,7 +18,7 @@
                             :east)})
 
 ;; Unfortunately Compojure API does not seem to support s/if construct of schema, hence schema itself is not exactly
-;; precise and certain aspects of validation are provided by other components.
+;; precise and certain aspects of validation are provided by other namespaces and functions.
 
 (s/defschema Action
              "This schema is used for validation of action request object."
