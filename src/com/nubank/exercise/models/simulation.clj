@@ -1,37 +1,57 @@
 (ns com.nubank.exercise.models.simulation
+  "This namespace contains functions that are to be provided to external caller for work with robots versus dinosaurs
+  simulation. Majority of functions in this namespace are mutating the internal state of application."
   (:require [com.nubank.exercise.models.core :refer :all]
             [com.nubank.exercise.models.robot :refer :all]
             [com.nubank.exercise.models.dinosaur :refer :all]))
 
-(def actors (atom []))
+(def actors
+  "This variable holds simulation state. It represents list of actors."
+  (atom []))
 
-(defn simulation [actors]
+(defn simulation
+  "This function constructs a map which acts as wrap around list of actors."
+  [actors]
   {:actors actors})
 
-(defn simulation-status [updated]
+(defn simulation-status
+  "This function constructs a map which represents update status of simulation."
+  [updated]
   {:updated updated})
 
-(defn- update-simulation! [updated-actors]
+(defn- update-simulation!
+  "This function updates simulation state with provided actor list and checks whether there is any difference between
+  previous and new actor states. It returns update status of simulation."
+  [updated-actors]
   (let [state-before-update @actors
         state-after-update (reset! actors updated-actors)]
     (simulation-status (not (= state-before-update state-after-update)))))
 
-(defn get-simulation []
-  "Retrieves ongoing simulation state"
+(defn get-simulation
+  "This function returns current simulation."
+  []
   (simulation @actors))
 
-(defn delete-simulation! []
-  "Deletes ongoing simulation"
+(defn delete-simulation!
+  "This function empties current simulation.
+  It returns update status."
+  []
   (update-simulation! []))
 
-(defn create-dinosaur! [dinosaur]
-  "Creates dinosaur in ongoing simulation"
+(defn create-dinosaur!
+  "This function creates dinosaur in current simulation.
+  It returns update status."
+  [dinosaur]
   (update-simulation! (create-dinosaur @actors dinosaur)))
 
-(defn create-robot! [robot]
-  "Creates robot in ongoing simulation"
+(defn create-robot!
+  "This function creates robot in current simulation.
+  It returns update status."
+  [robot]
   (update-simulation! (create-robot @actors robot)))
 
-(defn perform-robot-action! [robot-id, action]
-  "Performs robot action thus updating ongoing simulation"
+(defn perform-robot-action!
+  "This function performs robot action thus updating current simulation.
+  It returns update status."
+  [robot-id action]
   (update-simulation! (perform-robot-action @actors robot-id action)))
