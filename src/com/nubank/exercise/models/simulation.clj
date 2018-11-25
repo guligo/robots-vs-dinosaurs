@@ -3,7 +3,8 @@
   simulation. Majority of functions in this namespace are mutating the internal state of application."
   (:require [com.nubank.exercise.models.core :refer :all]
             [com.nubank.exercise.models.robot :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]))
+            [com.nubank.exercise.models.dinosaur :refer :all]
+            [clojure.tools.logging :as log]))
 
 (def actors
   "This variable holds simulation state. It represents list of actors."
@@ -36,22 +37,26 @@
   "This function empties current simulation.
   It returns update status."
   []
+  (log/debug "Deleting simulation")
   (update-simulation! []))
 
 (defn create-dinosaur!
   "This function creates dinosaur in current simulation.
   It returns update status."
   [dinosaur]
+  (log/debug "Creating dinosaur" dinosaur)
   (update-simulation! (create-dinosaur @actors dinosaur)))
 
 (defn create-robot!
   "This function creates robot in current simulation.
   It returns update status."
   [robot]
+  (log/debug "Creating robot" robot)
   (update-simulation! (create-robot @actors robot)))
 
 (defn perform-robot-action!
   "This function performs robot action thus updating current simulation.
   It returns update status."
   [robot-id action]
+  (log/debug "Performing action on robot with ID" robot-id action)
   (update-simulation! (perform-robot-action @actors robot-id action)))

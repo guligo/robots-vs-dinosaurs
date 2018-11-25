@@ -3,7 +3,13 @@
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [metosin/compojure-api "1.1.11"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [org.clojure/tools.logging "0.4.1"]
+                 [org.slf4j/slf4j-log4j12 "1.7.1"]
+                 [log4j/log4j "1.2.17" :exclusions [javax.mail/mail
+                                                    javax.jms/jms
+                                                    com.sun.jmdk/jmxtools
+                                                    com.sun.jmx/jmxri]]]
   :plugins [[lein-ring "0.12.4"]
             [lein-cloverage "1.0.13"]
             [lein-midje "3.2.1"]
