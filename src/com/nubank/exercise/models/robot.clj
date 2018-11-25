@@ -56,9 +56,9 @@
                (if (= motion :backward)
                  (case (:dirn robot)
                    :north {:row (- (:row robot) 1)}
-                   :west {:col (- (:col robot) 1)}
+                   :west {:col (+ (:col robot) 1)}
                    :south {:row (+ (:row robot) 1)}
-                   :east {:col (+ (:col robot) 1)})
+                   :east {:col (- (:col robot) 1)})
                  {}))]
     (update-actor actors (merge robot move))))
 
