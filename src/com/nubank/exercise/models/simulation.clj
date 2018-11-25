@@ -25,8 +25,10 @@
   previous and new actor states. It returns update status of simulation."
   [updated-actors]
   (let [state-before-update @actors
-        state-after-update (reset! actors updated-actors)]
-    (simulation-status (not (= state-before-update state-after-update)))))
+        state-after-update (reset! actors updated-actors)
+        status (simulation-status (not (= state-before-update state-after-update)))]
+    (log/debug "Simulation status" status)
+    status))
 
 (defn get-simulation
   "This function returns current simulation."
