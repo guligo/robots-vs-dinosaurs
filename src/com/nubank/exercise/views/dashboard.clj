@@ -25,7 +25,7 @@
        [:h1 "Simulation"]
        [:h2 "Dinosaur and robot count:&nbsp;" (count actors)]
        [:table
-         (for [row (range min-boundary (+ max-boundary 1))]
+         (for [row (range min-boundary (inc max-boundary))]
            [:tr
-           (for [col (range min-boundary (+ max-boundary 1))]
+           (for [col (range min-boundary (inc max-boundary))]
              [:td {:style "text-align: center;"} (render-cell matrix row col)])])]])))
