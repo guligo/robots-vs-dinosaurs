@@ -8,11 +8,13 @@
   ([row col id] (actor :dinosaur row col id)))
 
 (defn create-dinosaur
-  "This function adds dinosaur to list of actors."
+  "This function adds dinosaur to list of actors.
+  It returns updated list of actors."
   [actors dinosaur]
   (create-actor actors dinosaur))
 
 (defn delete-dinosaur
-  "This function deletes dinosaur from list of actors."
+  "This function deletes dinosaur from list of actors.
+  It returns updated list of actors."
   [actors row col]
   (delete-actor actors :dinosaur row col))

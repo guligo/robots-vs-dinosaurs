@@ -5,7 +5,7 @@
   (:require [com.nubank.exercise.models.common :refer :all]))
 
 (defn actor
-  "This function constructs actor map."
+  "This function constructs map which represents actor entity."
   ([type row col] {:type type :row row :col col})
   ([type row col id] {:type type :row row :col col :id id}))
 
@@ -47,7 +47,8 @@
        (<= (:row actor) max-boundary)))
 
 (defn create-actor
-  "This function adds an actor to actor list."
+  "This function adds an actor to actor list.
+  It returns updated list of actors."
   [actors actor]
   {:pre [(contains? actor :type)
          (contains? actor :row)
@@ -65,7 +66,8 @@
   (some #(if (and (= type (:type %)) (= actor-id (:id %))) %) actors))
 
 (defn update-actor
-  "This function updates actor within simulation based on its ID."
+  "This function updates actor within simulation based on its ID.
+  It returns updated list of actors."
   [actors actor]
   (let [index (first (map first
                           (filter
@@ -79,6 +81,7 @@
       actors)))
 
 (defn delete-actor
-  "This function deletes an actor from list of actors based on its location assuming caller knows its type."
+  "This function deletes an actor from list of actors based on its location assuming caller knows its type.
+  It returns updated list of actors."
   [actors type row col]
   (remove #(actors-equal-based-on-location-and-type? (actor type row col) %) actors))
