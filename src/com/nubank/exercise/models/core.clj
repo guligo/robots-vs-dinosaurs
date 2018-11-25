@@ -22,10 +22,9 @@
 (defn- no-other-actors-with-same-location? [actors, actor]
   (not-any? #(actors-in-same-location? actor %) actors))
 
-(defn- get-id [actors]
+(defn- get-next-id [actors]
   (if (not (empty? actors))
-    (inc (reduce max (map #(:id %) actors)))
-    0))
+    (inc (reduce max (map #(:id %) actors))) 0))
 
 (defn- actor-within-boundaries? [actor]
   "Checks whether actor's location is within simulation boundaries"
@@ -39,11 +38,12 @@
          (contains? actor :row)
          (contains? actor :col)]}
   "Adds an actor to actor list if one with such location does not already exist"
+  (let [next-id (get-next-id actors)]
   (if (and (actor-within-boundaries? actor)
            (no-other-actors-with-same-location? actors actor)
-           (no-other-actors-with-same-id? actors actor))
-    (conj actors (assoc actor :id (get-id actors)))
-    actors))
+           (no-other-actors-with-same-id? actors actor)
+           (< next-id Long/MAX_VALUE))
+    (conj actors (assoc actor :id next-id)) actors)))
 
 (defn get-actor [actors, type, actor-id]
   "Retrieves actor by its ID"
