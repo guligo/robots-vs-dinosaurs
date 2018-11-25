@@ -1,4 +1,7 @@
 (ns com.nubank.exercise.models.core
+  "This namespace is responsible for core functionality of simulation. Instead of working with specific entities
+  like robot or dinosaur, it uses abstract entity called actor. Actors must have type assigned which is exactly how
+  it is turned from abstract into specific."
   (:require [com.nubank.exercise.models.common :refer :all]))
 
 (defn actor
@@ -10,7 +13,8 @@
   "This function checks whether two actors are in same location."
   [actor1 actor2]
   (and (not (= (:id actor1) (:id actor2)))
-       (= (:row actor1) (:row actor2)) (= (:col actor1) (:col actor2))))
+       (= (:row actor1) (:row actor2))
+       (= (:col actor1) (:col actor2))))
 
 (defn- actors-equal-based-on-location-and-type?
   "This function checks whether two actors are same based on type and location."
