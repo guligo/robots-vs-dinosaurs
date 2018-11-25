@@ -58,5 +58,5 @@
   "This function performs robot action thus updating current simulation.
   It returns update status."
   [robot-id action]
-  (log/debug "Performing action on robot with ID" robot-id action)
+  (log/debug "Performing action" action "on robot with ID" robot-id)
   (update-simulation! (perform-robot-action @actors robot-id action)))

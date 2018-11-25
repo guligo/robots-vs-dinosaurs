@@ -29,9 +29,9 @@
                        => [(robot 1 1 :east 123)] :times 1))
        (fact "Robot action is delegated"
              (do (create-robot! (robot 3 3 :west))
-                 (perform-robot-action! (robot 3 3 :west 0) (action :move :forward))
+                 (perform-robot-action! 0 (action :move :forward))
                  (get-simulation))
-             => (simulation [(robot 2 3 :west 0)])
+             => (simulation [(robot 3 2 :west 0)])
              (provided (perform-robot-action [(robot 3 3 :west 0)]
-                                             (let [robot (robot 3 3 :west 0)] robot)
-                                             (let [action (action :move :forward)] action)) => [(robot 2 3 :west 0)] :times 1)))
+                                             0
+                                             (let [action (action :move :forward)] action)) => [(robot 3 2 :west 0)] :times 1)))
