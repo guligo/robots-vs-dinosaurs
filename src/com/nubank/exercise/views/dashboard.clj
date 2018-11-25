@@ -3,15 +3,22 @@
             [com.nubank.exercise.models.simulation :refer :all]
             [hiccup.core :refer :all]))
 
-(defn render-actor [actor]
+(defn- render-direction [dirn]
+  (case dirn
+    :north "^"
+    :east ">"
+    :south "v"
+    :west "<"))
+
+(defn- render-actor [actor]
   (if (= (:type actor) :robot)
-    [:span {:style "color: blue;"} "R" (:id actor) (first (name (:dirn actor)))]
+    [:span {:style "color: blue;"} "R" (:id actor) (render-direction(:dirn actor))]
     [:span {:style "color: green;"} "D" (:id actor)]))
 
-(defn render-field []
-  [:span {:style "color: silver;"} "^^^"])
+(defn- render-field []
+  [:span {:style "color: silver;"} "---"])
 
-(defn render-cell [matrix, row, col]
+(defn- render-cell [matrix, row, col]
   (if (contains? matrix [row col])
     (let [actor (matrix [row col])]
       (render-actor actor))
