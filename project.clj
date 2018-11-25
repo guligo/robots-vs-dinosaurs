@@ -6,7 +6,8 @@
                  [hiccup "1.0.5"]]
   :plugins [[lein-ring "0.12.4"]
             [lein-cloverage "1.0.13"]
-            [lein-midje "3.2.1"]]
+            [lein-midje "3.2.1"]
+            [lein-codox "0.10.5"]]
   :ring {:handler com.nubank.exercise.app/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
