@@ -27,7 +27,7 @@
   (let [state-before-update @actors
         state-after-update (reset! actors updated-actors)
         status (simulation-status (not (= state-before-update state-after-update)))]
-    (log/debug "Simulation status" status)
+    (log/debug "Simulation status after last operation" status)
     status))
 
 (defn get-simulation
