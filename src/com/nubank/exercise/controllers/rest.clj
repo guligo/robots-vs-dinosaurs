@@ -7,11 +7,16 @@
             [ring.util.http-response :refer :all]
             [compojure.route :as r]))
 
-(defn request->robot [request]
+(defn- request->robot [request]
   (robot (:row request) (:col request) (:dirn request)))
 
-(defn request->dinosaur [request]
+(defn- request->dinosaur [request]
   (dinosaur (:row request) (:col request)))
+
+(defn- request->action [request]
+  (if (contains? request :param)
+    (action (:action request) (:param request))
+    (action (:action request))))
 
 (defn rest-routes []
   (api {:swagger {:ui "/docs"
@@ -39,7 +44,7 @@
            :summary "Updates robot based on provided action"
            :path-params [id :- Long]
            :body [action Action]
-           (ok (perform-robot-action! id action)))
+           (ok (perform-robot-action! id (request->action action))))
 
     (POST "/dinosaurs" []
           :summary "Creates dinosaur"
