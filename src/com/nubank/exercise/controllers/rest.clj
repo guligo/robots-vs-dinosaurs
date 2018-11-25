@@ -33,21 +33,18 @@
     (POST "/robots" []
           :summary "Creates robot"
           :body [request Robot]
-          (create-robot! (request->robot request))
-          (no-content))
+          (ok (create-robot! (request->robot request))))
 
     (PATCH "/robots/:id" [id]
            :summary "Updates robot based on provided action"
            :path-params [id :- Long]
            :body [action Action]
-           (perform-robot-action! id action)
-           (no-content))
+           (ok (perform-robot-action! id action)))
 
     (POST "/dinosaurs" []
           :summary "Creates dinosaur"
           :body [request Dinosaur]
-          (create-dinosaur! (request->dinosaur request))
-          (no-content))
+          (ok (create-dinosaur! (request->dinosaur request))))
 
     (undocumented
       (r/not-found (not-found)))))

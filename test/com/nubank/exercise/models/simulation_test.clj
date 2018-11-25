@@ -14,7 +14,7 @@
        (fact "Possible to reset ongoing simulation"
              (do (create-robot! (robot 0 0 :north))
                  (delete-simulation!))
-             => (simulation []))
+             => (simulation-status true))
        (fact "Dinosaur creation is delegated"
              (do (create-dinosaur! (dinosaur 3 3))
                  (get-simulation))

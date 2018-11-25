@@ -16,7 +16,7 @@ These are the features required:
 - Two or more entities (robots or dinosaurs) cannot occupy the same position;
 - Attempting to move a robot outside the simulation space is an invalid operation.
 
-# Development
+# Instructions
 
 In order to run project locally:
 
