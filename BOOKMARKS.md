@@ -99,7 +99,7 @@
 
   https://github.com/weavejester/codox
 
-- clojure/tools.logging
+- clojure.tools.logging
 
   - https://github.com/clojure/tools.logging
   - http://www.bahmanm.com/blogs/how-to-add-logging-to-a-clojure-project
