@@ -14,8 +14,6 @@
   "Adds robot to simulation"
   (create-actor actors robot))
 
-;; TODO: Consider refactoring into form attack-dinosaurs [actors, robot-id]
-
 (defn attack-dinosaurs [actors, robot]
   "Destroys dinosaurs around robot"
   (-> actors
@@ -23,8 +21,6 @@
       (delete-actor :dinosaur (+ (:row robot) 1) (:col robot))
       (delete-actor :dinosaur (:row robot) (- (:col robot) 1))
       (delete-actor :dinosaur (:row robot) (+ (:col robot) 1))))
-
-;; TODO: Consider refactoring into form turn-robot [actors, robot-id, side]
 
 (defn turn-robot [actors, robot, side]
   "Turns robot to the left or right"
@@ -42,8 +38,6 @@
                    :west :north)
                  side))]
     (update-actor actors (assoc robot :dirn dirn))))
-
-;; TODO: Consider refactoring into form move-robot [actors, robot-id, motion]
 
 (defn move-robot [actors, robot, motion]
   "Moves robot forward or backward"
