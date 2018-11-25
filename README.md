@@ -28,4 +28,4 @@ In order to run project locally:
 
 1. Access http://localhost:3000/dashboard to see visual representation of simulation
 
-1. Since code is documented using Docstrings, following command can be used to generate documentation ```lein codox```.
+1. Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation.
