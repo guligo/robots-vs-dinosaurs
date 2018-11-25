@@ -1,4 +1,5 @@
 (ns com.nubank.exercise.controllers.rest
+  "This namespace contains functions used for creation of REST API routes."
   (:require [com.nubank.exercise.models.simulation :refer :all]
             [com.nubank.exercise.models.robot :refer :all]
             [com.nubank.exercise.models.dinosaur :refer :all]
@@ -7,25 +8,32 @@
             [ring.util.http-response :refer :all]
             [compojure.route :as r]))
 
-(defn- request->robot [request]
+(defn- request->robot
+  "This function converts robot request object into robot actor."
+  [request]
   (robot (:row request) (:col request) (:dirn request)))
 
-(defn- request->dinosaur [request]
+(defn- request->dinosaur
+  "This function converts dinosaur request object into dinosaur actor."
+  [request]
   (dinosaur (:row request) (:col request)))
 
-(defn- request->action [request]
+(defn- request->action
+  "This function converts action request object into action structure."
+  [request]
   (if (contains? request :param)
     (action (:action request) (:param request))
     (action (:action request))))
 
-(defn rest-routes []
+(defn rest-routes
+  "This function creates REST API routes as well as configures Swagger for documenting those APIs."
+  []
   (api {:swagger {:ui "/docs"
                   :spec "/swagger.json"
                   :data {:info {:title "Robots vs Dinosaurs"
                                 :description "REST API for robots versus dinosaurs problem"}
                          :consumes ["application/json"]
                          :produces ["application/json"]}}}
-
     (GET "/simulation" []
          :summary "Returns current state of simulation"
          (ok (get-simulation)))
