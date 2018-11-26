@@ -35,11 +35,15 @@ For compilation, testing and running [Leiningen](https://leiningen.org) build au
 
 In order to run project locally:
 
-1. Before execution run tests using command ```lein midje``` or ```lein cloverage --runner :midje```
-1. Then execute ```lein ring server-headless```
+1. Execute ```lein ring server-headless```
 1. Access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI
 1. Access http://localhost:3000/dashboard to see visual representation of simulation
-1. Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation
+
+Other useful commands:
+
+- Tests can be executed using ```lein midje```
+- Code coverage can be measured using ```lein cloverage --runner :midje``` 
+- Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation
 
 ## Design
 
