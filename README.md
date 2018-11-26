@@ -36,8 +36,8 @@ For compilation, testing and running [Leiningen](https://leiningen.org) build au
 In order to run project locally:
 
 1. Execute ```lein ring server-headless```
-1. Access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI
-1. Access http://localhost:3000/dashboard to see visual representation of simulation
+1. Access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI. There you will also find brief description of available REST resources and methods, and example requests.
+1. Access http://localhost:3000/dashboard to see visual representation of simulation. This dashboard shows 50 x 50 grid with all robots and dinosaurs plotted on it. Robots are displayed using notation ```R[ID][direction]``` (for example, ```R1>```) and dinosaurs ```D[ID]``` (for example, ```D2```). Knowing ID of robot helps performing actions on it.
 
 Other useful commands:
 
