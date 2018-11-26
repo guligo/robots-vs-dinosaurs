@@ -5,8 +5,7 @@
             [com.nubank.exercise.models.dinosaur :refer :all]))
 
 (facts "About simulation"
-       (background (before :facts (delete-simulation!))
-                   (after :facts (delete-simulation!)))
+       (background (after :facts (delete-simulation!)))
        (fact "Simulation persists state"
              (do (create-robot! (robot 0 0 :north))
                  (get-simulation))
