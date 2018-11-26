@@ -31,15 +31,15 @@
   (api {:swagger {:ui "/docs"
                   :spec "/swagger.json"
                   :data {:info {:title "Robots vs Dinosaurs"
-                                :description "REST API for robots versus dinosaurs problem"}
+                                :description "REST API for robots versus dinosaurs simulation"}
                          :consumes ["application/json"]
                          :produces ["application/json"]}}}
     (GET "/simulation" []
-         :summary "Returns current state of simulation"
+         :summary "Returns current simulation"
          (ok (get-simulation)))
 
     (DELETE "/simulation" []
-            :summary "Resets simulation to initial state"
+            :summary "Resets simulation"
             (delete-simulation!)
             (no-content))
 
