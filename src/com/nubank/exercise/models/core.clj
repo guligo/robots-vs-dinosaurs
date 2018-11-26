@@ -84,4 +84,4 @@
   "This function deletes an actor from list of actors based on its location assuming caller knows its type.
   It returns updated list of actors."
   [actors type row col]
-  (remove #(actors-equal-based-on-location-and-type? (actor type row col) %) actors))
+  (vec (remove #(actors-equal-based-on-location-and-type? (actor type row col) %) actors)))

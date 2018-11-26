@@ -54,8 +54,8 @@
              (perform-robot-action [(dinosaur 0 1 0) (dinosaur 1 1 1)] 1 (action :attack))
              => [(dinosaur 0 1 0) (dinosaur 1 1 1)])
        (fact "Attack cannot be performed by nonexistent robot"
-             (perform-robot-action [(robot 0 0 0)] 1 (action :attack))
-             => [(robot 0 0 0)]))
+             (perform-robot-action [(robot 0 0 :north 0)] 1 (action :attack))
+             => [(robot 0 0 :north 0)]))
 
 (facts "About turning"
        (fact "Robot needs parameter in order to turn"
@@ -83,8 +83,11 @@
              (perform-robot-action [(dinosaur 0 0 0)] 0 (action :turn :right))
              => [(dinosaur 0 0 0)])
        (fact "Nonexistent robot cannot turn"
-             (perform-robot-action [(robot 0 0 0)] 1 (action :turn :right))
-             => [(robot 0 0 0)]))
+             (perform-robot-action [(robot 0 0 :north 0)] 1 (action :turn :right))
+             => [(robot 0 0 :north 0)])
+       (fact "Robot can attack and then turn"
+             (perform-robot-action (perform-robot-action [(robot 0 0 :north 0)] 0 (action :attack)) 0 (action :turn :right))
+             => [(robot 0 0 :east 0)]))
 
 (facts "About moving robot"
        (fact "Robot needs parameter in order to move"
@@ -117,5 +120,8 @@
              (perform-robot-action [(dinosaur 0 0 0)] 0 (action :move :forward))
              => [(dinosaur 0 0 0)])
        (fact "Nonexistent robot cannot move"
-             (perform-robot-action [(robot 0 0 0)] 1 (action :move :forward))
-             => [(robot 0 0 0)]))
+             (perform-robot-action [(robot 0 0 :north 0)] 1 (action :move :forward))
+             => [(robot 0 0 :north 0)])
+       (fact "Robot can attack and then move"
+             (perform-robot-action (perform-robot-action [(robot 0 0 :north 0)] 0 (action :attack)) 0 (action :move :backward))
+             => [(robot 1 0 :north 0)]))

@@ -59,7 +59,9 @@
                (and (= motion :backward) (= (:dirn robot) :west)) {:col (inc (:col robot))}
                (and (= motion :backward) (= (:dirn robot) :south)) {:row (dec (:row robot))}
                (and (= motion :backward) (= (:dirn robot) :east)) {:col (dec (:col robot))})]
-    (update-actor actors (merge robot move))))
+    (if (some? move)
+      (update-actor actors (merge robot move))
+      actors)))
 
 (defn perform-robot-action
   "This function performs requested robot action.
