@@ -1,7 +1,7 @@
 (defproject robots-vs-dinosaurs "1.0.0"
   :description "Solution to Nubank's robots versus dinosaurs problem"
   :min-lein-version "2.0.0"
-  :jvm-opts ["-Xmx256m"]
+  :jvm-opts ["-Xmx128m"]
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [metosin/compojure-api "1.1.11"]
                  [hiccup "1.0.5"]
