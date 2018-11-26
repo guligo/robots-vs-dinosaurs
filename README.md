@@ -59,4 +59,4 @@ Even though this problem naturally maps to 2D array, I decided to go with vector
 
 ## Notes
 
-- Namespace ```com.nubank.exercise.app-integration-test``` represents integration test which takes quite a bit of time to run and hence is ignored using ```future-facts```.
+- Namespace ```com.nubank.exercise.app-integration-test``` represents integration test which takes some time to execute and hence is ignored using ```future-facts```.
