@@ -37,7 +37,7 @@ In order to run project locally:
 
 1. Before execution run tests using command ```lein midje``` or ```lein cloverage --runner :midje```
 1. Then execute ```lein ring server-headless```
-1. Access http://localhost:3000/docs/index.html#/default in your favourite browser to make simulation API calls via Swagger UI
+1. Access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI
 1. Access http://localhost:3000/dashboard to see visual representation of simulation
 1. Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation
 
@@ -49,6 +49,6 @@ I consider simulation as list of actors. Each actor is an abstract entity and ha
 - It is impossibe to add actor to simulation if actor with such location already exist.
 - etc.
 
-Such implementation is easily extendable, since dinosaur is just an actor of type ```dinosaur``` and robot is an actor of type ```robot``` with additional property ```dirn``` which represents direction. With such design, adding actor of another type to simulation is not a problem.
+Such implementation is easily extendable, since dinosaur is just an actor of type ```dinosaur``` and robot is an actor of type ```robot``` with additional property ```dirn``` which represents direction. With such design adding actor of another type to simulation is not a problem.
 
-Even though this problem naturally maps to 2D array, I decided to go with list due to following reasons. It makes solution more scalable since list contains only actors that are part of simulation, whereas 2D array would reflect empty fields too. For 50 x 50 grid it makes little difference, however for larger grids it would.
+Even though this problem naturally maps to 2D array, I decided to go with vector structure. It makes solution more scalable since vector contains only actors that are part of simulation, whereas 2D array would reflect empty fields too. For 50 x 50 grid it makes little difference, however for larger grids it would.
