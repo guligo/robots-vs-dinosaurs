@@ -1,5 +1,7 @@
 # Robots vs Dinosaurs
 
+## Description
+
 Nubank is assembling an army of remote-controlled robots to fight the dinosaurs and the first step towards that is to run simulations on how they will perform. You are tasked with implementing a service that provides a REST API to support those simulations.
 
 These are the features required:
@@ -14,7 +16,7 @@ These are the features required:
 - Two or more entities (robots or dinosaurs) cannot occupy the same position;
 - Attempting to move a robot outside the simulation space is an invalid operation.
 
-# Tech Stack
+## Tech Stack
 
 Solution is built in Clojure programming language and using following libraries:
 
@@ -25,12 +27,16 @@ Solution is built in Clojure programming language and using following libraries:
 
 For compilation, testing and running [Leiningen](https://leiningen.org) build automation tool is required.
 
-# Instructions
+## Instructions
 
 In order to run project locally:
 
 1. Before execution run tests using command ```lein midje``` or ```lein cloverage --runner :midje```
 1. Then execute ```lein ring server-headless```
-1. Access http://localhost:3000/docs/index.html#/default in your favourite browser to make simulation API calls
+1. Access http://localhost:3000/docs/index.html#/default in your favourite browser to make simulation API calls via Swagger UI
 1. Access http://localhost:3000/dashboard to see visual representation of simulation
-1. Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation.
+1. Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation
+
+## Design
+
+Even though this problem naturally maps to 2D array, I felt like passing around and working on data structure with 50 x 50 entries is not the best approach. Considering REST API, displaying such data structure in JSON format would be quite inconvenient too.
