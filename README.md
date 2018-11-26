@@ -21,11 +21,18 @@ These are the features required:
 In order to run project locally:
 
 1. Before execution run tests using command ```lein midje``` or ```lein cloverage --runner :midje```
-
 1. Then execute ```lein ring server-headless```
-
 1. Access http://localhost:3000/docs/index.html#/default in your favourite browser to make simulation API calls
-
 1. Access http://localhost:3000/dashboard to see visual representation of simulation
-
 1. Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation.
+
+# Tech Stack
+
+Solution is built in Clojure programming language and using following libraries:
+
+- [Compojure API](https://github.com/metosin/compojure-api) for REST
+- [Prismatic Schema](https://github.com/plumatic/schema) for data validation
+- [Hiccup](https://github.com/weavejester/hiccup) for HTML rendering
+- [Midje](https://github.com/marick/Midje) for testing
+
+For compilation, testing and running [Leiningen](https://leiningen.org) build automation tool is required.
