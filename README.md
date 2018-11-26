@@ -56,3 +56,7 @@ Simulation is considered as list of actors. Each actor is an abstract entity and
 Such implementation is easily extendable, since dinosaur is just an actor of type ```dinosaur``` and robot is an actor of type ```robot``` with additional property ```dirn``` which represents direction. With such design adding actor of another type to simulation is not a problem.
 
 Even though this problem naturally maps to 2D array, I decided to go with vector structure. It makes solution more scalable since vector contains only actors that are part of simulation, whereas 2D array would reflect empty fields too. For 50 x 50 grid it makes little difference, however for larger grids it would.
+
+## Notes
+
+- Namespace ```com.nubank.exercise.app-integration-test``` represents integration test which takes quite a bit of time to run and hence is ignored using ```future-facts```.
