@@ -37,7 +37,7 @@
   "This function returns HTML representation of simulation."
   []
   (let [actors (:actors (get-simulation))
-        matrix (zipmap (map #(vector (:row %) (:col %)) actors) actors)]
+        actor-matrix (zipmap (map #(vector (:row %) (:col %)) actors) actors)]
     (html
       [:div
        [:h1 "Simulation"]
@@ -46,4 +46,4 @@
          (for [row (range min-boundary (inc max-boundary))]
            [:tr
            (for [col (range min-boundary (inc max-boundary))]
-             [:td {:style "text-align: center;"} (render-cell matrix row col)])])]])))
+             [:td {:style "text-align: center;"} (render-cell actor-matrix row col)])])]])))
