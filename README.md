@@ -41,8 +41,9 @@ In order to run project locally:
 
 Other useful commands:
 
-- Tests can be executed using ```lein midje```
-- Code coverage can be measured using ```lein cloverage --runner :midje``` 
+- Unit tests can be executed using ```lein midje :filters -it```
+- The only integration test can be executed using ```lein midje :filters it```
+- Test coverage can be measured using ```lein cloverage --runner :midje```
 - Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation
 
 ## Design
