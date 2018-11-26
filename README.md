@@ -49,4 +49,4 @@ Even though this problem naturally maps to 2D array, I decided to go with differ
 - It is impossibe to add actor to simulation if actor with such location already exist.
 - etc.
 
-Such implementation is easily extendable, since dinosaur is just an actor of type ```dinosaur``` and robot is an actor of type ```robot``` with additional property ```dirn``` which represents direction. It means that adding actor of another type to simulation should not be an issue.
+Such implementation is easily extendable, since dinosaur is just an actor of type ```dinosaur``` and robot is an actor of type ```robot``` with additional property ```dirn``` which represents direction. With such design, adding actor of another type to simulation is not a problem.
