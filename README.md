@@ -20,7 +20,7 @@ These are the features required:
 
 Solution is built in Clojure programming language and using following libraries:
 
-- [Compojure API](https://github.com/metosin/compojure-api) for REST
+- [Compojure API + Swagger](https://github.com/metosin/compojure-api) for REST
 - [Prismatic Schema](https://github.com/plumatic/schema) for data validation
 - [Hiccup](https://github.com/weavejester/hiccup) for HTML rendering
 - [Midje](https://github.com/marick/Midje) for testing
