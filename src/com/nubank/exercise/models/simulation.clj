@@ -39,26 +39,30 @@
   "This function empties current simulation.
   It returns update status."
   []
-  (log/debug "Deleting simulation")
-  (update-simulation! []))
+  (locking actors
+    (log/debug "Deleting simulation")
+    (update-simulation! [])))
 
 (defn create-dinosaur!
   "This function creates dinosaur in current simulation.
   It returns update status."
   [dinosaur]
-  (log/debug "Creating dinosaur" dinosaur)
-  (update-simulation! (create-dinosaur @actors dinosaur)))
+  (locking actors
+    (log/debug "Creating dinosaur" dinosaur)
+    (update-simulation! (create-dinosaur @actors dinosaur))))
 
 (defn create-robot!
   "This function creates robot in current simulation.
   It returns update status."
   [robot]
-  (log/debug "Creating robot" robot)
-  (update-simulation! (create-robot @actors robot)))
+  (locking actors
+    (log/debug "Creating robot" robot)
+    (update-simulation! (create-robot @actors robot))))
 
 (defn perform-robot-action!
   "This function performs robot action thus updating current simulation.
   It returns update status."
   [robot-id action]
-  (log/debug "Performing action" action "on robot with ID" robot-id)
-  (update-simulation! (perform-robot-action @actors robot-id action)))
+  (locking actors
+    (log/debug "Performing action" action "on robot with ID" robot-id)
+    (update-simulation! (perform-robot-action @actors robot-id action))))
