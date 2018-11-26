@@ -4,7 +4,7 @@
             [ring.mock.request :as mock]
             [cheshire.core :as cheshire]))
 
-(facts "In general about simulation"
+(future-facts "In general about simulation"
        (background (after :facts (app (-> (mock/request :delete "/simulation")
                                           (mock/content-type "application/json")))))
 
