@@ -43,7 +43,7 @@ In order to run project locally:
 
 ## Design
 
-I consider simulation as list of actors. Each actor is an abstract entity and has properties ```type```, ```row```, ```col``` and ```id```. Actors are added and updated in simulation based on various rules:
+Simulation is considered as list of actors. Each actor is an abstract entity and has properties ```type```, ```row```, ```col``` and ```id```. Actors are added to list and updated based on various rules:
 
 - For example, it is impossible to add actor whose ```row``` and ```col``` properties are outside of simulation grid boundaries.
 - It is impossibe to add actor to simulation if actor with such location already exists.
