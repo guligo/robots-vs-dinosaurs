@@ -24,6 +24,10 @@ Solution is built in Clojure programming language and using following libraries:
 - [Prismatic Schema](https://github.com/plumatic/schema) for data validation
 - [Hiccup](https://github.com/weavejester/hiccup) for HTML rendering
 - [Midje](https://github.com/marick/Midje) for testing
+- Other misc libs and plugins:
+  - [clojure.tools.logging](https://github.com/clojure/tools.logging)
+  - [codox](https://github.com/weavejester/codox)
+  - [ring-mock](https://github.com/weavejester/ring-mock)
 
 For compilation, testing and running [Leiningen](https://leiningen.org) build automation tool is required.
 
@@ -39,4 +43,10 @@ In order to run project locally:
 
 ## Design
 
-Even though this problem naturally maps to 2D array, I felt like passing around and working on data structure with 50 x 50 entries is not the best approach. Considering REST API, displaying such data structure in JSON format would be quite inconvenient too.
+Even though this problem naturally maps to 2D array, I decided to go with different approach. I consider simulation as list of actors. Each actor is an abstract entity and has properties ```type```, ```row```, ```col``` and ```id```. Actors are added and updated in simulation based on various rules:
+
+- For example, it is impossible to add actor whose ```row``` and ```col``` properties are outside of simulation grid boundaries.
+- It is impossibe to add actor to simulation if actor with such location already exist.
+- etc.
+
+Such implementation is easily extendable, since dinosaur is just an actor of type ```dinosaur``` and robot is an actor of type ```robot``` with additional property ```dirn``` which represents direction. It means that adding actor of another type to simulation should not be an issue.
