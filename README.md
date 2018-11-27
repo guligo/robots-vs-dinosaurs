@@ -37,7 +37,7 @@ In order to run project locally:
 
 1. Execute ```lein ring server-headless```
 
-2. Then access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI. Brief description of available REST resources and methods, and example requests can be found there. Just one remark, Swagger page does not accurately reflect model and examples for performing action method (PATCH /robots/{id}). Here are few examples:
+2. Then access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI. Brief description of available REST resources and methods, and example requests can be found there. Just one remark, Swagger page does not accurately reflect model and examples for calling ```PATCH /robots/{id}```. Here are few example requests:
 
   + ```{"action": "attack"}``` - attacking action does not require any parameter
   + ```{"action": "move", "param": "forward"}``` - moving action requires parameter ```forward``` or ```backward```
