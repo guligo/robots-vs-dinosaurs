@@ -10,8 +10,8 @@
 
 (s/defschema Robot
              "This schema is used for validation of robot request object."
-             {:row (s/constrained s/Int #(<= 0 % 49))
-              :col (s/constrained s/Int #(<= 0 % 49))
+             {:row (s/constrained s/Int #(<= min-boundary % max-boundary))
+              :col (s/constrained s/Int #(<= min-boundary % max-boundary))
               :dirn (s/enum :north
                             :west
                             :south

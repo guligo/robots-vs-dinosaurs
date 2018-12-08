@@ -36,7 +36,7 @@
   "This function returns next ID for an actor."
   [actors]
   (if (not (empty? actors))
-    (inc (reduce max (map #(:id %) actors))) 0))
+    (inc (reduce max (map :id actors))) 0))
 
 (defn- actor-within-boundaries?
   "This function checks whether actor's location is within simulation boundaries."
@@ -69,11 +69,10 @@
   "This function updates actor within simulation based on its ID.
   It returns updated list of actors."
   [actors actor]
-  (let [index (first (map first
-                          (filter
-                            #(and (= (:id (second %)) (:id actor))
-                                  (= (:type (second %) (:type actor))))
-                            (map-indexed vector actors))))]
+  (let [index (first (some
+                       #(when (and (= (:id (second %)) (:id actor))
+                                   (= (:type (second %) (:type actor)))) %)
+                       (map-indexed vector actors)))]
     (if (and (actor-within-boundaries? actor)
              (no-other-actors-with-same-location? actors actor)
              (some? index))
@@ -84,4 +83,4 @@
   "This function deletes an actor from list of actors based on its location assuming caller knows its type.
   It returns updated list of actors."
   [actors type row col]
-  (vec (remove #(actors-equal-based-on-location-and-type? (actor type row col) %) actors)))
+  (into [] (remove #(actors-equal-based-on-location-and-type? (actor type row col) %) actors)))
