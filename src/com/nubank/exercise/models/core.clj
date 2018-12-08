@@ -69,10 +69,10 @@
   "This function updates actor within simulation based on its ID.
   It returns updated list of actors."
   [actors actor]
-  (let [index (first (some
-                       #(when (and (= (:id (second %)) (:id actor))
-                                   (= (:type (second %) (:type actor)))) %)
-                       (map-indexed vector actors)))]
+  (let [index (some #(when (and (= (:id (second %)) (:id actor))
+                                (= (:type (second %) (:type actor))))
+                       (first %))
+                    (map-indexed vector actors))]
     (if (and (actor-within-boundaries? actor)
              (no-other-actors-with-same-location? actors actor)
              (some? index))
