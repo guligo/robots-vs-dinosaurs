@@ -36,7 +36,7 @@
 (defn render
   "This function returns HTML representation of simulation."
   []
-  (let [actors (:actors (get-actors))
+  (let [actors (get-actors)
         actor-matrix (zipmap (map #(vector (:row %) (:col %)) actors) actors)]
     (html
       [:div
