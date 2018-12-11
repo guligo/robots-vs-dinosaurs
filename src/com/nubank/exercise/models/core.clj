@@ -7,7 +7,7 @@
 (defn actor
   "This function constructs map which represents actor entity."
   ([type row col] {:type type :row row :col col})
-  ([type row col id] {:type type :row row :col col :id id}))
+  ([type row col id] (assoc (actor type row col) :id id)))
 
 (defn- actors-in-same-location?
   "This function checks whether two actors are in same location."
@@ -35,8 +35,9 @@
 (defn- get-next-id
   "This function returns next ID for an actor."
   [actors]
-  (if (not (empty? actors))
-    (inc (reduce max (map :id actors))) 0))
+  (if-not (empty? actors)
+    (inc (reduce max (map :id actors)))
+    0))
 
 (defn- actor-within-boundaries?
   "This function checks whether actor's location is within simulation boundaries."
@@ -54,16 +55,17 @@
          (contains? actor :row)
          (contains? actor :col)]}
   (let [next-id (get-next-id actors)]
-  (if (and (actor-within-boundaries? actor)
-           (no-other-actors-with-same-location? actors actor)
-           (no-other-actors-with-same-id? actors actor)
-           (< next-id Long/MAX_VALUE))
-    (conj actors (assoc actor :id next-id)) actors)))
+    (if (and (actor-within-boundaries? actor)
+             (no-other-actors-with-same-location? actors actor)
+             (no-other-actors-with-same-id? actors actor)
+             (< next-id Long/MAX_VALUE))
+      (conj actors (assoc actor :id next-id))
+      actors)))
 
 (defn get-actor
   "This function retrieves actor by ID assuming caller knows its type."
   [actors type actor-id]
-  (some #(if (and (= type (:type %)) (= actor-id (:id %))) %) actors))
+  (some #(when (and (= type (:type %)) (= actor-id (:id %))) %) actors))
 
 (defn update-actor
   "This function updates actor within simulation based on its ID.
