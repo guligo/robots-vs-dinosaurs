@@ -35,31 +35,31 @@ For compilation, testing and running [Leiningen](https://leiningen.org) build au
 
 In order to run project locally:
 
-1. Execute ```lein ring server-headless```
+1. Execute `lein ring server-headless`
 
-2. Then access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI. Brief description of available REST resources and methods, and example requests can be found there. Just one remark, Swagger page does not accurately reflect model and examples for calling ```PATCH /robots/{id}```. Here are few example requests:
+2. Then access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI. Brief description of available REST resources and methods, and example requests can be found there. Just one remark, Swagger page does not accurately reflect model and examples for calling `PATCH /robots/{id}`. Here are few example requests:
 
-  + ```{"action": "attack"}``` - attacking action does not require any parameter
-  + ```{"action": "move", "param": "forward"}``` - moving action requires parameter ```forward``` or ```backward```
-  + ```{"action": "turn", "param": "left"}``` - turning action requires parameter ```left``` or ```right```
+  + `{"action": "attack"}` - attacking action does not require any parameter
+  + `{"action": "move", "param": "forward"}` - moving action requires parameter `forward` or `backward`
+  + `{"action": "turn", "param": "left"}` - turning action requires parameter `left` or `right`
 
-3. Access http://localhost:3000/dashboard to see visual representation of simulation. Page shows 50 x 50 grid with all robots and dinosaurs plotted on it. Robots are displayed using notation ```R[ID][direction]``` (for example, ```R1>```) and dinosaurs using ```D[ID]``` (for example, ```D2```). Knowing ID of robot helps performing actions on it.
+3. Access http://localhost:3000/dashboard to see visual representation of simulation. Page shows 50 x 50 grid with all robots and dinosaurs plotted on it. Robots are displayed using notation `R[ID][direction]` (for example, `R1>`) and dinosaurs using `D[ID]` (for example, `D2`). Knowing ID of robot helps performing actions on it.
 
 Other useful commands:
 
-- Unit tests can be executed using ```lein midje :filters -it```
-- The only integration test can be executed using ```lein midje :filters it```
-- Test coverage can be measured using ```lein cloverage --runner :midje```
-- Since code is documented using Docstrings, command ```lein codox``` can be used to generate documentation
+- Unit tests can be executed using `lein midje :filters -it`
+- The only integration test can be executed using `lein midje :filters it`
+- Test coverage can be measured using `lein cloverage --runner :midje`
+- Since code is documented using Docstrings, command `lein codox` can be used to generate documentation
 
 ## Design
 
-Simulation is considered as list of actors. Each actor is an abstract entity and has properties ```type```, ```row```, ```col``` and ```id```. Actors are added to list and updated based on various rules:
+Simulation is considered as list of actors. Each actor is an abstract entity and has properties `type`, `row`, `col` and `id`. Actors are added to list and updated based on various rules:
 
-- For example, it is impossible to add actor whose ```row``` and ```col``` properties are outside of simulation grid boundaries.
+- For example, it is impossible to add actor whose `row` and `col` properties are outside of simulation grid boundaries.
 - It is impossible to add actor to simulation if actor with such location already exists.
 - etc.
 
-Such implementation is easily extendable, since dinosaur is just an actor of type ```dinosaur``` and robot is an actor of type ```robot``` with additional property ```dirn``` which represents direction. With such design adding actor of another type to simulation is not a problem.
+Such implementation is easily extendable, since dinosaur is just an actor of type `dinosaur` and robot is an actor of type `robot` with additional property `dirn` which represents direction. With such design adding actor of another type to simulation is not a problem.
 
 Even though this problem naturally maps to 2D array, I decided to go with vector structure. It makes solution more scalable since vector contains only actors that are part of simulation, whereas 2D array would reflect empty fields too. For 50 x 50 grid it makes little difference, however for larger grids it would.
