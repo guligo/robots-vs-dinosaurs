@@ -33,7 +33,7 @@
 (defn operation-status
   "This function constructs a map which represents update status of simulation."
   ([updated] {:updated updated})
-  ([prev-simulation-state new-simulation-state] (operation-status (not (= prev-simulation-state new-simulation-state)))));
+  ([prv-simulation-state new-simulation-state] (operation-status (not (= prv-simulation-state new-simulation-state)))));
 
 (defn rest-routes
   "This function creates simulation REST API routes as well as configures Swagger for documenting those APIs."
@@ -44,6 +44,7 @@
                                 :description "REST API for robots versus dinosaurs simulation"}
                          :consumes ["application/json"]
                          :produces ["application/json"]}}}
+
     (GET "/simulation" []
       :summary "Returns current simulation"
       (ok (simulation (get-actors))))
@@ -56,24 +57,24 @@
     (POST "/robots" []
           :summary "Creates robot"
           :body [request Robot]
-          (ok (operation-status
-                (get-actors)
-                (create-robot! (request->robot request)))))
+       (let [prv-simulation-state (get-actors)
+             new-simulation-state (create-robot! (request->robot request))]
+         (ok (operation-status prv-simulation-state new-simulation-state))))
 
     (PATCH "/robots/:id" [id]
            :summary "Updates robot based on provided action"
            :path-params [id :- Long]
            :body [action Action]
-           (ok (operation-status
-                 (get-actors)
-                 (perform-robot-action! id (request->action action)))))
+           (let [prv-simulation-state (get-actors)
+                 new-simulation-state (perform-robot-action! id (request->action action))]
+             (ok (operation-status prv-simulation-state new-simulation-state))))
 
     (POST "/dinosaurs" []
           :summary "Creates dinosaur"
           :body [request Dinosaur]
-          (ok (operation-status
-                (get-actors)
-                (create-dinosaur! (request->dinosaur request)))))
+          (let [prv-simulation-state (get-actors)
+                new-simulation-state (create-dinosaur! (request->dinosaur request))]
+            (ok (operation-status prv-simulation-state new-simulation-state))))
 
     (undocumented
       (r/not-found (not-found)))))
