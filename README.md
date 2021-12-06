@@ -33,17 +33,15 @@ In order to run project locally:
 
 1. Update or install Clojure: `brew install clojure/tools/clojure` or `brew upgrade clojure/tools/clojure`
 
-2. Install dependencies: `lein install`
+2. Run project: `lein ring server-headless`
 
-3. Run project: `lein ring server-headless`
-
-4. Then access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI. Brief description of available REST resources and methods, and example requests can be found there. Just one remark, Swagger page does not accurately reflect model and examples for calling `PATCH /robots/{id}`. Here are few example requests:
+3. Then access http://localhost:3000/docs/index.html#/default in browser to make simulation REST API calls via Swagger UI. Brief description of available REST resources and methods, and example requests can be found there. Just one remark, Swagger page does not accurately reflect model and examples for calling `PATCH /robots/{id}`. Here are few example requests:
 
   + `{"action": "attack"}` - attacking action does not require any parameter
   + `{"action": "move", "param": "forward"}` - moving action requires parameter `forward` or `backward`
   + `{"action": "turn", "param": "left"}` - turning action requires parameter `left` or `right`
 
-5. Access http://localhost:3000/dashboard to see visual representation of simulation. Page shows 50 x 50 grid with all robots and dinosaurs plotted on it. Robots are displayed using notation `R[ID][direction]` (for example, `R1>`) and dinosaurs using `D[ID]` (for example, `D2`). Knowing ID of robot helps performing actions on it.
+4. Access http://localhost:3000/dashboard to see visual representation of simulation. Page shows 50 x 50 grid with all robots and dinosaurs plotted on it. Robots are displayed using notation `R[ID][direction]` (for example, `R1>`) and dinosaurs using `D[ID]` (for example, `D2`). Knowing ID of robot helps performing actions on it.
 
 Other useful commands:
 
