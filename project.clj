@@ -11,7 +11,7 @@
                                                     javax.jms/jms
                                                     com.sun.jmdk/jmxtools
                                                     com.sun.jmx/jmxri]]]
-  :plugins [[lein-ring "0.12.4"]]
+  :plugins [[lein-ring "0.12.5"]]
   :ring {:handler com.nubank.exercise.app/app}
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring/ring-mock "0.3.2"]

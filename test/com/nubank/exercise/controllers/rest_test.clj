@@ -33,19 +33,19 @@
            (mock/body (cheshire/generate-string action)))))
 
 (facts "About simulation REST resource"
-  (fact "Request to retrieve simulation is handled"
+       (fact "Request to retrieve simulation is handled"
         (:status (res-get-simulation))
         => 200
         (slurp (:body (res-get-simulation)))
         => (cheshire/generate-string {:actors [{:type :robot :row 0 :col 1 :id 0 :dirn :north}
                                                {:type :dinosaur :row 1 :col 0 :id 1}]})
-        (provided (get-simulation)
-                  => (simulation [(robot 0 1 :north 0) (dinosaur 1 0 1)]) :times 1))
-  (fact "Request to delete simulation is handled"
-        (:status (res-delete-simulation))
-        => 204
-        (provided (delete-simulation!)
-                  => (simulation-status true) :times 1)))
+        (provided (get-actors)
+                  => [(robot 0 1 :north 0) (dinosaur 1 0 1)] :times 1))
+       (fact "Request to delete simulation is handled"
+             (:status (res-delete-simulation))
+             => 204
+             (provided (delete-actors!)
+                       => (operation-status true) :times 1)))
 
 (facts "About robots REST resource"
   (fact "Request to create robot can be handled"
@@ -54,7 +54,7 @@
         (slurp (:body (res-create-robot {:row 1 :col 1 :dirn :north})))
         => (cheshire/generate-string {:updated true})
         (provided (create-robot! (robot 1 1 :north))
-                  => (simulation-status true) :times 1))
+                  => (operation-status true) :times 1))
   (fact "Request with wrong structure to create robot cannot be handled"
         (:status (res-create-robot {:id 1 :row 1 :col 1 :dirn :north}))
         => 400)
@@ -67,14 +67,14 @@
         (slurp (:body (res-update-robot 1 {:action :attack})))
         => (cheshire/generate-string {:updated true})
         (provided (perform-robot-action! 1 (action :attack))
-                  => (simulation-status true) :times 1))
+                  => (operation-status true) :times 1))
   (fact "Request to update robot based on action with parameter can be handled"
         (:status (res-update-robot 2 {:action :move :param :forward}))
         => 200
         (slurp (:body (res-update-robot 2 {:action :move :param :forward})))
         => (cheshire/generate-string {:updated true})
-       (provided (perform-robot-action! 2 (action :move :forward))
-                 => (simulation-status true) :times 1))
+        (provided (perform-robot-action! 2 (action :move :forward))
+                  => (operation-status true) :times 1))
   (fact "Request to update robot based on wrong action is rejected"
         (:status (res-update-robot 3 {:action :swim}))
         => 400)
@@ -89,7 +89,7 @@
         (slurp (:body (res-create-dinosaur {:row 1 :col 1})))
         => (cheshire/generate-string {:updated true})
         (provided (create-dinosaur! (dinosaur 1 1))
-                  => (simulation-status true) :times 1))
+                  => (operation-status true) :times 1))
   (fact "Request with wrong structure to create dinosaur cannot be handled"
         (:status (res-create-dinosaur {:pos {:row 1 :col 1}}))
         => 400)

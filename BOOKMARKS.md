@@ -103,3 +103,7 @@
 
   - https://github.com/clojure/tools.logging
   - http://www.bahmanm.com/blogs/how-to-add-logging-to-a-clojure-project
+
+- Clojure for the Brave and True
+
+  https://www.braveclojure.com/clojure-for-the-brave-and-true

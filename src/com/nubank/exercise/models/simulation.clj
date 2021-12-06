@@ -7,62 +7,38 @@
             [clojure.tools.logging :as log]))
 
 (def actors
-  "This variable holds simulation state. It represents list of actors."
+  "This variable holds current list of actors."
   (atom []))
 
-(defn simulation
-  "This function constructs a map which acts as wrap around list of actors."
-  [actors]
-  {:actors actors})
-
-(defn simulation-status
-  "This function constructs a map which represents update status of simulation."
-  [updated]
-  {:updated updated})
-
-(defn- update-simulation!
-  "This function updates simulation state with provided actor list and checks whether there is any difference between
-  previous and new actor states. It returns update status of simulation."
-  [updated-actors]
-  (let [state-before-update @actors
-        state-after-update (reset! actors updated-actors)
-        status (simulation-status (not (= state-before-update state-after-update)))]
-    (log/debug "Simulation status after last operation" status)
-    status))
-
-(defn get-simulation
-  "This function returns current simulation."
+(defn get-actors
+  "This function returns current list of actors."
   []
-  (simulation @actors))
+  @actors)
 
-(defn delete-simulation!
-  "This function empties current simulation.
-  It returns update status."
+(defn delete-actors!
+  "This function empties current list of actors.
+  It returns modified actor list."
   []
-  (locking actors
-    (log/debug "Deleting simulation")
-    (update-simulation! [])))
+  (log/debug "Deleting simulation")
+  (swap! actors (fn [_] [])))
 
 (defn create-dinosaur!
-  "This function creates dinosaur in current simulation.
-  It returns update status."
+  "This function creates dinosaur in current list of actors.
+  It returns modified actor list."
   [dinosaur]
-  (locking actors
-    (log/debug "Creating dinosaur" dinosaur)
-    (update-simulation! (create-dinosaur @actors dinosaur))))
+  (log/debug "Creating dinosaur" dinosaur)
+  (swap! actors (fn [current-actors] (create-dinosaur current-actors dinosaur))))
 
 (defn create-robot!
-  "This function creates robot in current simulation.
-  It returns update status."
+  "This function creates robot in current list of actors.
+  It returns modified actor list."
   [robot]
-  (locking actors
-    (log/debug "Creating robot" robot)
-    (update-simulation! (create-robot @actors robot))))
+  (log/debug "Creating robot" robot)
+  (swap! actors (fn [current-actors] (create-robot current-actors robot))))
 
 (defn perform-robot-action!
-  "This function performs robot action thus updating current simulation.
-  It returns update status."
+  "This function performs robot action thus updating current list of actors.
+  It returns modified actor list."
   [robot-id action]
-  (locking actors
-    (log/debug "Performing action" action "on robot with ID" robot-id)
-    (update-simulation! (perform-robot-action @actors robot-id action))))
+  (log/debug "Performing action" action "on robot with ID" robot-id)
+  (swap! actors (fn [current-actors] (perform-robot-action current-actors robot-id action))))

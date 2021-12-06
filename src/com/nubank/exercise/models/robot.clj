@@ -11,7 +11,7 @@
 (defn action
   "This function constructs map that holds parameters for robot's action."
   ([name] {:action name})
-  ([name param] {:action name :param param}))
+  ([name param] (assoc (action name) :param param)))
 
 (defn create-robot
   "This function adds robot to list of actors.
