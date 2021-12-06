@@ -2,6 +2,8 @@
 
 ## Description
 
+This repo is a solution to an interview problem, whose description is provided below.
+
 Robo Corp is assembling an army of remote-controlled robots to fight the dinosaurs and the first step towards that is to run simulations on how they will perform. You are tasked with implementing a service that provides a REST API to support those simulations.
 
 These are the features required:
