@@ -1,6 +1,6 @@
-(ns com.nubank.exercise.models.core-test
+(ns me.guligo.exercise.models.core-test
   (:require [midje.sweet :refer :all]
-            [com.nubank.exercise.models.core :refer :all]))
+            [me.guligo.exercise.models.core :refer :all]))
 
 (facts "About actor creation"
        (fact "Possible to create an actor in an empty list"

@@ -1,9 +1,9 @@
-(ns com.nubank.exercise.models.simulation
+(ns me.guligo.exercise.models.simulation
   "This namespace contains functions that are to be provided to external caller for work with robots versus dinosaurs
   simulation. Majority of functions in this namespace are mutating the internal state of application."
-  (:require [com.nubank.exercise.models.core :refer :all]
-            [com.nubank.exercise.models.robot :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]
+  (:require [me.guligo.exercise.models.core :refer :all]
+            [me.guligo.exercise.models.robot :refer :all]
+            [me.guligo.exercise.models.dinosaur :refer :all]
             [clojure.tools.logging :as log]))
 
 (def actors

@@ -1,7 +1,7 @@
-(ns com.nubank.exercise.models.robot
+(ns me.guligo.exercise.models.robot
   "This namespace contains robot-specific functionality."
-  (:require [com.nubank.exercise.models.core :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]))
+  (:require [me.guligo.exercise.models.core :refer :all]
+            [me.guligo.exercise.models.dinosaur :refer :all]))
 
 (defn robot
   "This function constructs an actor of robot type with additional properties."

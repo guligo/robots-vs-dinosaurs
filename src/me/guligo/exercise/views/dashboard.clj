@@ -1,7 +1,7 @@
-(ns com.nubank.exercise.views.dashboard
+(ns me.guligo.exercise.views.dashboard
   "This namespace contains functions for rendering simulation dashboard page."
-  (:require [com.nubank.exercise.models.common :refer :all]
-            [com.nubank.exercise.models.simulation :refer :all]
+  (:require [me.guligo.exercise.models.common :refer :all]
+            [me.guligo.exercise.models.simulation :refer :all]
             [hiccup.core :refer :all]))
 
 (defn- render-direction

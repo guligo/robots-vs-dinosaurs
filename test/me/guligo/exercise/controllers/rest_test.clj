@@ -1,10 +1,10 @@
-(ns com.nubank.exercise.controllers.rest-test
+(ns me.guligo.exercise.controllers.rest-test
   (:require [midje.sweet :refer :all]
-            [com.nubank.exercise.app :refer :all]
-            [com.nubank.exercise.models.robot :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]
-            [com.nubank.exercise.models.simulation :refer :all]
-            [com.nubank.exercise.controllers.rest :refer :all]
+            [me.guligo.exercise.app :refer :all]
+            [me.guligo.exercise.models.robot :refer :all]
+            [me.guligo.exercise.models.dinosaur :refer :all]
+            [me.guligo.exercise.models.simulation :refer :all]
+            [me.guligo.exercise.controllers.rest :refer :all]
             [ring.mock.request :as mock]
             [cheshire.core :as cheshire]))
 

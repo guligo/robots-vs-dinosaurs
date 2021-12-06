@@ -1,7 +1,7 @@
-(ns com.nubank.exercise.app
+(ns me.guligo.exercise.app
   "This namespace represents main application entry point."
-  (:require [com.nubank.exercise.controllers.rest :as r]
-            [com.nubank.exercise.controllers.page :as p]
+  (:require [me.guligo.exercise.controllers.rest :as r]
+            [me.guligo.exercise.controllers.page :as p]
             [compojure.api.sweet :refer :all]))
 
 (defroutes app-routes
