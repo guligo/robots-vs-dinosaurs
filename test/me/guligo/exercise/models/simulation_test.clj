@@ -1,8 +1,8 @@
-(ns com.nubank.exercise.models.simulation-test
+(ns me.guligo.exercise.models.simulation-test
   (:require [midje.sweet :refer :all]
-            [com.nubank.exercise.models.robot :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]
-            [com.nubank.exercise.models.simulation :refer :all]))
+            [me.guligo.exercise.models.robot :refer :all]
+            [me.guligo.exercise.models.dinosaur :refer :all]
+            [me.guligo.exercise.models.simulation :refer :all]))
 
 (facts "About simulation"
        (background (after :facts (delete-actors!)))

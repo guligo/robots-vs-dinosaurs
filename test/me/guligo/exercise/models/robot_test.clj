@@ -1,8 +1,8 @@
-(ns com.nubank.exercise.models.robot-test
+(ns me.guligo.exercise.models.robot-test
   (:require [midje.sweet :refer :all]
-            [com.nubank.exercise.models.core :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]
-            [com.nubank.exercise.models.robot :refer :all]))
+            [me.guligo.exercise.models.core :refer :all]
+            [me.guligo.exercise.models.dinosaur :refer :all]
+            [me.guligo.exercise.models.robot :refer :all]))
 
 (facts "About robot creation"
        (fact "Creation of robot actually means creation of an actor of 'robot' type with additional field"

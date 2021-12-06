@@ -1,5 +1,5 @@
 (defproject robots-vs-dinosaurs "1.0.0"
-  :description "Solution to Nubank's robots versus dinosaurs problem"
+  :description "Solution to robots versus dinosaurs problem"
   :min-lein-version "2.0.0"
   :jvm-opts ["-Xmx256m"]
   :dependencies [[org.clojure/clojure "1.9.0"]
@@ -12,7 +12,7 @@
                                                     com.sun.jmdk/jmxtools
                                                     com.sun.jmx/jmxri]]]
   :plugins [[lein-ring "0.12.5"]]
-  :ring {:handler com.nubank.exercise.app/app}
+  :ring {:handler me.guligo.exercise.app/app}
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring/ring-mock "0.3.2"]
                                   [midje "1.9.4"]]

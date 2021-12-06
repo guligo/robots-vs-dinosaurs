@@ -1,6 +1,6 @@
-(ns com.nubank.exercise.views.schemas
+(ns me.guligo.exercise.views.schemas
   "This namespace contains schemas used by Compojure API for JSON validation."
-  (:require [com.nubank.exercise.models.common :refer :all]
+  (:require [me.guligo.exercise.models.common :refer :all]
             [schema.core :as s]))
 
 (s/defschema Dinosaur

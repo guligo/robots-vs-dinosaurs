@@ -1,6 +1,6 @@
-(ns com.nubank.exercise.models.dinosaur
+(ns me.guligo.exercise.models.dinosaur
   "This namespace contains dinosaur-specific functionality."
-  (:require [com.nubank.exercise.models.core :refer :all]))
+  (:require [me.guligo.exercise.models.core :refer :all]))
 
 (defn dinosaur
   "This function constructs an actor of dinosaur type."

@@ -1,4 +1,4 @@
-(ns com.nubank.exercise.models.common
+(ns me.guligo.exercise.models.common
   "This namespace contains variables and functions commonly used across other namespaces.")
 
 (def min-boundary

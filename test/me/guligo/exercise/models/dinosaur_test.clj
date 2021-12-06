@@ -1,7 +1,7 @@
-(ns com.nubank.exercise.models.dinosaur-test
+(ns me.guligo.exercise.models.dinosaur-test
   (:require [midje.sweet :refer :all]
-            [com.nubank.exercise.models.core :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]))
+            [me.guligo.exercise.models.core :refer :all]
+            [me.guligo.exercise.models.dinosaur :refer :all]))
 
 (facts "About dinosaur"
        (fact "Creation of dinosaur actually means creation of an actor of 'dinosaur' type"

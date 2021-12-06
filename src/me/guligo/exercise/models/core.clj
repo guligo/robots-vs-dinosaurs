@@ -1,8 +1,8 @@
-(ns com.nubank.exercise.models.core
+(ns me.guligo.exercise.models.core
   "This namespace is responsible for core functionality of simulation. Instead of working with specific entities
   like robot or dinosaur, it uses abstract entity called actor. Actors must have type assigned which is exactly how
   it is turned from abstract into specific."
-  (:require [com.nubank.exercise.models.common :refer :all]))
+  (:require [me.guligo.exercise.models.common :refer :all]))
 
 (defn actor
   "This function constructs map which represents actor entity."

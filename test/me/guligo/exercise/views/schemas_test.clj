@@ -1,6 +1,6 @@
-(ns com.nubank.exercise.views.schemas-test
+(ns me.guligo.exercise.views.schemas-test
   (:require [midje.sweet :refer :all]
-            [com.nubank.exercise.views.schemas :refer :all]
+            [me.guligo.exercise.views.schemas :refer :all]
             [schema.core :as s]))
 
 (facts "About dinosaur schema"

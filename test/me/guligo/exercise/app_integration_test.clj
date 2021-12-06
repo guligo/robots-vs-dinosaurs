@@ -1,6 +1,6 @@
-(ns com.nubank.exercise.app-integration-test
+(ns me.guligo.exercise.app-integration-test
   (:require [midje.sweet :refer :all]
-            [com.nubank.exercise.app :refer :all]
+            [me.guligo.exercise.app :refer :all]
             [ring.mock.request :as mock]
             [cheshire.core :as cheshire]))
 

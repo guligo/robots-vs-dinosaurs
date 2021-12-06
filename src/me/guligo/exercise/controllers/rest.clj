@@ -1,9 +1,9 @@
-(ns com.nubank.exercise.controllers.rest
+(ns me.guligo.exercise.controllers.rest
   "This namespace contains functions used for creating REST API routes."
-  (:require [com.nubank.exercise.models.simulation :refer :all]
-            [com.nubank.exercise.models.robot :refer :all]
-            [com.nubank.exercise.models.dinosaur :refer :all]
-            [com.nubank.exercise.views.schemas :refer :all]
+  (:require [me.guligo.exercise.models.simulation :refer :all]
+            [me.guligo.exercise.models.robot :refer :all]
+            [me.guligo.exercise.models.dinosaur :refer :all]
+            [me.guligo.exercise.views.schemas :refer :all]
             [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
             [compojure.route :as r]))
